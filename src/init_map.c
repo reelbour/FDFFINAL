@@ -6,7 +6,7 @@
 /*   By: ahammou- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/26 17:05:11 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/28 14:16:39 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 void	init_map(t_map *map)
 {
-	map->x = 0;
-	map->y = 0;
-	map->z = 0;
 	map->line = NULL;
 	map->tab = NULL;
 	map->split = NULL;
+	map->coord = NULL;
+	map->nb_line = 0;
+	map->nb_word = 0;
 }
 
 /*
@@ -50,6 +50,7 @@ void	read_map(int fd, t_map *map)
 	start = 0;
 	while (get_next_line(fd, &map->line) > 0)
 	{
+		map->nb_line++;;
 		if (start == 0)
 		{
 			map->tab = ft_strdup(map->line);

@@ -6,7 +6,7 @@
 /*   By: reelbour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 10:53:24 by reelbour          #+#    #+#             */
-/*   Updated: 2019/04/26 17:01:26 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/28 14:14:16 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 
 typedef struct	s_map
 {
+	char	*line;
 	char	*tab;
 	char	**split;
-	int		x;
-	int		y;
-	int		z;
-	char	*line;
+	int		**coord;
+	int		nb_line;
+	int		nb_word;
 }				t_map;
 
 /*
