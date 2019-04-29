@@ -18,10 +18,20 @@
 
 void	ft_error(int n)
 {
+	t_map *map;
+
 	if (n == 1)
-		ft_putstr("Erreur de lecture du fd");
+		{
+			ft_putstr("Erreur de lecture du fd");
+			free_map(map);
+			exit(1);
+		}
 	if (n == 2)
+		{
 		ft_putstr("Erreur d'allocations memoire");
+		free_map(map);
+		exit(1);
+		}
 }
 
 /*
@@ -32,24 +42,21 @@ int		main(int ac, char **av)
 {
 	int		fd;
 	t_map	*map;
-	char	buf[BUFF_SIZE + 1];
-	int		ret;
 
 	int i = 0;
-	int j;
 
-	if (!(map = (t_map*)malloc(sizeof(t_map*))))
-		ft_error(2);
-	if (!(fd = open(av[1], O_RDONLY)) && fd < 0)
-		ft_error(1);
-	if (ac != 2)
-		ft_putchar('\n');
-	else
+	if (ac == 2)
 	{
+		if (!(map = (t_map*)malloc(sizeof(t_map*))))
+			ft_error(2);
+		if (!(fd = open(av[1], O_RDONLY)) && fd < 0)
+			ft_error(1);
 		init_map(map);
 		read_map(fd, map);
 		map->split = ft_strsplit(map->tab, ' ');
+	//	free_map(map);
 	}
-	free_map(map);
+	else
+		ft_putendl("Usage .//fdf /map");
 	return (0);
 }

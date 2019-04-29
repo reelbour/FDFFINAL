@@ -24,6 +24,8 @@ void	init_map(t_map *map)
 	map->line = NULL;
 	map->tab = NULL;
 	map->split = NULL;
+	map->tabint = NULL;
+
 }
 
 /*
@@ -52,14 +54,17 @@ void	read_map(int fd, t_map *map)
 	{
 		if (start == 0)
 		{
-			map->tab = ft_strdup(map->line);
+			if (!(map->tab = ft_strdup(map->line)))
+				ft_error(1);
 			start = 1;
 		}
 		else
 		{
-			map->tab = ft_strjoin(map->tab, map->line);
+			if (!(map->tab = ft_strjoin(map->tab, map->line)))
+				ft_error(1);
 		}
-		map->tab = ft_strjoin(map->tab, "\n");
+		if (!(map->tab = ft_strjoin(map->tab, "\n")))
+			ft_error(1);
 	}
-	//printf("%s", map->tab);
+	printf("%s", map->tab);
 }

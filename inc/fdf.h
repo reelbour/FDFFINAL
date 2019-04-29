@@ -23,6 +23,7 @@
 
 typedef struct	s_map
 {
+	int		**tabint;
 	char	*tab;
 	char	**split;
 	int		x;
@@ -38,5 +39,5 @@ typedef struct	s_map
 void			init_map(t_map *map);
 void			read_map(int fd, t_map *map);
 void			free_map(t_map *map);
-
+void			ft_error(int n);
 #endif
