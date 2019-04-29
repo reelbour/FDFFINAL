@@ -6,7 +6,7 @@
 /*   By: ahammou- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 14:47:01 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/28 18:06:14 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/29 12:58:53 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_error(int n)
 	if (n == 2)
 	{
 		ft_putstr("Couldn't allocate memory");
-		exit(0);
+		exit(1);
 	}
 	if (n == 3)
 	{
@@ -35,18 +35,3 @@ void	ft_error(int n)
 	}
 }
 
-int		count_nb_char(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (map->line[i])
-	{
-		if (map->line[i] == '\n')
-			break ;
-		map->nb_char++;
-		i++;
-	}
-	printf("%d\n", map->nb_char * map->nb_line);
-	return (map->nb_char);
-}
