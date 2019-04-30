@@ -6,7 +6,7 @@
 /*   By: reelbour <reelbour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 10:53:24 by reelbour          #+#    #+#             */
-/*   Updated: 2019/04/30 19:23:16 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/30 20:06:39 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 
 typedef struct	s_m
 {
-	char	*line;
-	char	*str;
-	char	**split;
 	int		nb_l;
 	int		nb_w;
 	int		**coord;
@@ -34,7 +31,7 @@ typedef struct	s_m
 void			init_m(t_m *m);
 void			read_m(int fd, t_m *m);
 int				count_words(char *str);
-void			stock_int_tab(t_m *m);
+void			stock_int_tab(char *str, t_m *m);
 
 /*
 ** ==================== FUNCTIONS IN VALIDATION.C ==================== **
