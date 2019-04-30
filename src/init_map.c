@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/30 12:14:06 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/30 15:48:30 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,25 @@ void	stock_int(t_map *map)
 	int	i;
 
 	i = 0;
-	map->coord = (int*)malloc(sizeof(int) * map->nb_word);
-	while (*map->str)
+	map->split = (char**)malloc((sizeof(char) * map->nb_word) * map->nb_line);
+	map->coord = (int**)malloc(sizeof(int *) * map->nb_line);
+	map->split = ft_strsplit(map->str, '\n');
+	// printf("nbword %d|%d\n", map->nb_word, (int)ft_strlen(nombre[0]));
+	while (map->split[i])
 	{
-		while (*map->str + i != ' ' || *map->str + i != '\n')
-			i++;
-		*map->coord = ft_atoi(&map->str + i);
-		*map->coord++;
-		*map->str = (*map->str + i) + 1;
+
+		char **nombre = ft_strsplit(map->split[i], ' ');
+		map->coord[i] = (int *)malloc(sizeof(map->nb_word / map->nb_line));
+		int j = 0;
+		while (j < (map->nb_word / map->nb_line))
+		{
+			//printf("[%i]: %d ",j, ft_atoi(nombre[j]));
+			map->coord[i][j] = ft_atoi(nombre[j]);
+			printf("map->coord[%d][%d]: |%d|\n", i, j, map->coord[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
 	}
 }
 
@@ -65,8 +76,3 @@ void	read_map(int fd, t_map *map)
 	map->nb_word = ft_countwords(map->str, ' ') - 1;
 	stock_int(map);
 }
-//		if (!(map->split = ft_strsplit(map->line, ' ')))
-//			ft_error(2);
-//	if (!(map->nb = (int**)malloc(sizeof(int*) * map->nb_line)) &&
-//			!(map->nb_split = (int*)malloc(sizeof(int) * map->nb_line)))
-//		ft_error(2);

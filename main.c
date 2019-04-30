@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/30 12:05:15 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/30 15:41:01 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,7 @@ int		main(int ac, char **av)
 			ft_error(2);
 		init_map(map);
 		read_map(fd, map);
-		while (map->str[i])
-			printf("%c", map->str[i++]);
-		printf("\n");
-		printf("nb_line = %d\n", map->nb_line);
-		printf("[%d] ", map->coord);
 	}
-	while (map->str[i])
-		printf("%c", map->str[i++]);
-	printf("\n");
-	printf("%d\n", map->nb_word);
+	//printf("%s\n", map->split);
 	return (0);
 }
