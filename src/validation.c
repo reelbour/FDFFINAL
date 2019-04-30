@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammou- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 14:47:01 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/28 18:06:14 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/30 09:38:47 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,4 @@ void	ft_error(int n)
 		ft_putstr("Error");
 		exit(0);
 	}
-}
-
-int		count_nb_char(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (map->line[i])
-	{
-		if (map->line[i] == '\n')
-			break ;
-		map->nb_char++;
-		i++;
-	}
-	printf("%d\n", map->nb_char * map->nb_line);
-	return (map->nb_char);
 }

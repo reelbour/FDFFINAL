@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammou- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/28 16:15:18 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/30 10:38:36 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ int		main(int ac, char **av)
 		init_map(map);
 		read_map(fd, map);
 	}
+	while (map->str[i])
+		printf("%c", map->str[i++]);
+	printf("\n");
+	printf("%d\n", map->nb_word);
 	return (0);
 }
