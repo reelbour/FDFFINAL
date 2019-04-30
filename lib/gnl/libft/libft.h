@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammou- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:59:00 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/26 19:31:11 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/30 18:40:13 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *news);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void				ft_free_tab(void **tab);
 
 void				ft_lstprint(t_list *list);
 void				ft_lstfree(t_list *lst);

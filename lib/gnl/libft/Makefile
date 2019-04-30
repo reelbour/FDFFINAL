@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammou- <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/10 14:03:14 by ahammou-          #+#    #+#              #
-#    Updated: 2019/04/26 19:31:22 by ahammou-         ###   ########.fr        #
+#    Updated: 2019/04/30 18:38:49 by ahammou-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ FILE = ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr ft_memcmp\
 	   ft_strmapi ft_strequ ft_strnequ ft_strsub ft_strjoin ft_strtrim\
 	   ft_strsplit ft_itoa ft_lstnew ft_lstdelone ft_lstdel ft_lstadd \
 	   ft_lstiter ft_lstmap ft_lstfree ft_isspace ft_lstprint ft_countwords\
-	   ft_isnegative
+	   ft_isnegative ft_free_tab
 
 C = $(addsuffix .c, $(FILE))
 O = $(addsuffix .o, $(FILE))

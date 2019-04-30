@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/30 15:41:01 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/30 19:04:12 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 int		main(int ac, char **av)
 {
 	int		fd;
-	t_map	*map;
-	int i = 0;
+	t_m		*m;
 
 	if (ac != 2)
 		ft_putchar('\n');
@@ -24,11 +23,11 @@ int		main(int ac, char **av)
 	{
 		if (!(fd = open(av[1], O_RDONLY)) && fd < 0)
 			ft_error(1);
-		if (!(map = (t_map*)malloc(sizeof(*map))))
+		if (!(m = (t_m*)malloc(sizeof(*m))))
 			ft_error(2);
-		init_map(map);
-		read_map(fd, map);
+		init_m(m);
+		read_m(fd, m);
 	}
-	//printf("%s\n", map->split);
+	ft_free_tab((void**)m->split);
 	return (0);
 }

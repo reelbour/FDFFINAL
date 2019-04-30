@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammou- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/21 08:38:34 by ahammou-          #+#    #+#             */
-/*   Updated: 2018/10/21 08:42:34 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/04/30 18:40:50 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/04/30 18:43:55 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+void	ft_free_tab(void **tab)
 {
-	unsigned char l;
+	int i;
 
-	l = (c >= 0 && c <= 127) ? 1 : 0;
-	return (l);
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }
