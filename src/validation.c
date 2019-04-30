@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 14:47:01 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/30 09:38:47 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/30 12:05:00 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_error(int n)
 	if (n == 2)
 	{
 		ft_putstr("Couldn't allocate memory");
-		exit(0);
+		exit(1);
 	}
 	if (n == 3)
 	{

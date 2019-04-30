@@ -6,15 +6,15 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/30 10:50:49 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/30 12:04:40 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
 /*
-** Initializes all parameters in map struct
-*/
+ ** Initializes all parameters in map struct
+ */
 
 void	init_map(t_map *map)
 {
@@ -42,8 +42,8 @@ void	stock_int(t_map *map)
 }
 
 /*
-** Reads a map file and stores the digits in a char *tab
-*/
+ ** Reads a map file and stores the digits in a int **tab
+ */
 
 void	read_map(int fd, t_map *map)
 {
@@ -65,3 +65,8 @@ void	read_map(int fd, t_map *map)
 	map->nb_word = ft_countwords(map->str, ' ') - 1;
 	stock_int(map);
 }
+//		if (!(map->split = ft_strsplit(map->line, ' ')))
+//			ft_error(2);
+//	if (!(map->nb = (int**)malloc(sizeof(int*) * map->nb_line)) &&
+//			!(map->nb_split = (int*)malloc(sizeof(int) * map->nb_line)))
+//		ft_error(2);
