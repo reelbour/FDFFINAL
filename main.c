@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "inc/fdf.h"
+#include "lib/minilibx/mlx.h"
 
 int		main(int ac, char **av)
 {
@@ -27,6 +28,10 @@ int		main(int ac, char **av)
 			ft_error(2);
 		init_m(m);
 		read_m(fd, m);
+		m->mlx = mlx_init();
+		m->win = mlx_new_window(m->mlx, 1280, 900, "FDF");
+		mlx_loop(m->mlx);
+
 	}
 	//ft_free_tab((void**)m->split);
 	return (0);

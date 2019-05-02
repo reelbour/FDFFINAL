@@ -42,11 +42,14 @@ void	stock_int_tab(char *str, t_m *m)
 	if (!(split = (char**)malloc((sizeof(char*) * m->nb_l) + 1)))
 		ft_error(2);
 	ft_secure_malloc(m, nb);
-	split = ft_strsplit(str, '\n');
+	if (!(split = ft_strsplit(str, '\n')))
+		ft_error(2);
 	while (split[i])
 	{
-		nb = ft_strsplit(split[i], ' ');
-		m->coord[i] = (int *)malloc(sizeof(int) * m->nb_w);
+		if (!(nb = ft_strsplit(split[i], ' ')))
+			ft_error(2);
+		if (!(m->coord[i] = (int *)malloc(sizeof(int) * m->nb_w)))
+			ft_error(2);
 		j = 0;
 		while (j < (m->nb_w / m->nb_l))
 		{
@@ -56,8 +59,8 @@ void	stock_int_tab(char *str, t_m *m)
 		}
 		i++;
 	}
-	ft_free_tab((void**)nb);
-	ft_free_tab((void**)split);
+//	ft_free_tab((void**)nb);
+//	ft_free_tab((void**)split);
 }
 
 /*
@@ -77,12 +80,15 @@ void	read_m(int fd, t_m *m)
 		m->nb_l++;
 		if (start == 0)
 		{
-			str = ft_strdup(line);
+			if (!(str = ft_strdup(line)))
+				ft_error(2);
 			start = 1;
 		}
 		else
-			str = ft_strjoin(str, line);
-		str = ft_strjoin(str, "\n");
+			if (!(str = ft_strjoin(str, line)))
+				ft_error(2);
+		if (!(str = ft_strjoin(str, "\n")))
+			ft_error(2);
 	}
 	m->nb_w = ft_countwords(str, ' ') - 1;
 	stock_int_tab(str, m);

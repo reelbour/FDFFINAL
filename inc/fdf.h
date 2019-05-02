@@ -22,6 +22,8 @@ typedef struct	s_m
 	int		nb_l;
 	int		nb_w;
 	int		**coord;
+	void	*win;
+	void	*mlx;
 }				t_m;
 
 /*
