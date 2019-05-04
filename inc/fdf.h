@@ -6,7 +6,7 @@
 /*   By: reelbour <reelbour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 10:53:24 by reelbour          #+#    #+#             */
-/*   Updated: 2019/04/30 20:06:39 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/04 19:27:48 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../lib/minilibx/mlx.h"
 # include "../lib/gnl/get_next_line.h"
+# define W 800
+# define H 800
 # include <stdio.h>
 
 typedef struct	s_m
@@ -38,4 +40,5 @@ void			stock_int_tab(char *str, t_m *m);
 */
 
 void			ft_error(int n);
+void 			render_m();
 #endif

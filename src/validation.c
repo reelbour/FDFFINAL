@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 14:47:01 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/30 12:05:00 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/04/30 21:09:27 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	ft_error(int n)
 {
 	if (n == 1)
 	{
-		ft_putstr("Couldn't read the fd");
+		ft_putstr("Error : couldn't read the fd");
 		exit(0);
 	}
 	if (n == 2)
 	{
-		ft_putstr("Couldn't allocate memory");
+		ft_putstr("Error : couldn't allocate memory");
 		exit(1);
 	}
 	if (n == 3)
