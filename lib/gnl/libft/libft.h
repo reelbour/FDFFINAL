@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:59:00 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/30 18:40:13 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/08 14:45:44 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void				ft_lstadd(t_list **alst, t_list *news);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_free_tab(void **tab);
-
+size_t				ft_abs(int n);
 void				ft_lstprint(t_list *list);
 void				ft_lstfree(t_list *lst);
 int					ft_countwords(const char *str, char c);

@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/30 21:04:44 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/08 16:10:48 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	init_m(t_m *m)
 	m->nb_l = 0;
 	m->nb_w = 0;
 	m->coord = 0;
+	m->i = 0;
 }
 
 void	ft_secure_malloc(t_m *m, char **nb)
@@ -51,7 +52,7 @@ void	stock_int_tab(char *str, t_m *m)
 		while (j < (m->nb_w / m->nb_l))
 		{
 			m->coord[i][j] = ft_atoi(nb[j]);
-			//printf("m->coord[%d][%d]: |%d|\n", i, j, m->coord[i][j]);
+			printf("m->coord[%d][%d]: |%d|\n", i, j, m->coord[i][j]);
 			j++;
 		}
 		i++;
