@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/28 14:47:01 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/30 21:09:27 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/05/08 14:43:00 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/05/08 14:43:27 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-/*
-** Displays error messages
-*/
-
-void	ft_error(int n)
+size_t	ft_abs(int n)
 {
-	if (n == 1)
-	{
-		ft_putstr("Error : couldn't read the fd");
-		exit(0);
-	}
-	if (n == 2)
-	{
-		ft_putstr("Error : couldn't allocate memory");
-		exit(1);
-	}
-	if (n == 3)
-	{
-		ft_putstr("Error");
-		exit(0);
-	}
+	if (n < 0)
+		return (-n);
+	else
+		return (n);
 }
