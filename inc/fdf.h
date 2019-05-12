@@ -6,7 +6,7 @@
 /*   By: reelbour <reelbour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 10:53:24 by reelbour          #+#    #+#             */
-/*   Updated: 2019/05/08 16:24:51 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/12 16:51:25 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 # include "../lib/minilibx/mlx.h"
 # include "../lib/gnl/get_next_line.h"
 # include <math.h>
-# define W 2600
-# define H 1800
-# define V 5
+# define W 500
+# define H 500
+# define V (W / 100) * 5
 # include <stdio.h>
 
 typedef struct	s_m
 {
 	int		nb_l;
 	int		nb_w;
-	int		i;
-	int		j;
+	int		x;
+	int		y;
 	int		**coord;
 }				t_m;
 
@@ -38,16 +38,14 @@ typedef struct	s_ml
 
 typedef struct	s_v
 {
-	int		x0;
 	int		x1;
-	int		y0;
+	int		x2;
 	int		y1;
+	int		y2;
 	int		dx;
 	int		dy;
-	int		e;
-	int		e2;
-	int		ix;
-	int		iy;
+	int		xinc;
+	int		yinc;
 }				t_v;
 
 /*
@@ -65,4 +63,7 @@ void			stock_int_tab(char *str, t_m *m);
 
 void			ft_error(int n);
 void			render_m(t_m *m);
+void			init_v(t_v *v, t_m *m);
+void			init_ml(t_ml *ml);
+void			line(t_v *v, t_m *m, t_ml *ml);
 #endif
