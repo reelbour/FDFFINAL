@@ -6,7 +6,7 @@
 /*   By: reelbour <reelbour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 10:53:24 by reelbour          #+#    #+#             */
-/*   Updated: 2019/05/12 16:51:25 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/13 12:06:57 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,13 @@ typedef struct	s_ml
 
 typedef struct	s_v
 {
+	int		x0;
 	int		x1;
-	int		x2;
+	int		y0;
 	int		y1;
-	int		y2;
 	int		dx;
 	int		dy;
-	int		xinc;
-	int		yinc;
+	int		e;
 }				t_v;
 
 /*
@@ -63,7 +62,6 @@ void			stock_int_tab(char *str, t_m *m);
 
 void			ft_error(int n);
 void			render_m(t_m *m);
-void			init_v(t_v *v, t_m *m);
 void			init_ml(t_ml *ml);
-void			line(t_v *v, t_m *m, t_ml *ml);
+void			draw_line(t_v *v, t_ml *ml);
 #endif
