@@ -6,11 +6,8 @@
 /*   By: reelbour <reelbour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 10:53:24 by reelbour          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2019/04/30 20:06:39 by ahammou-         ###   ########.fr       */
-=======
 /*   Updated: 2019/05/08 16:24:51 by ahammou-         ###   ########.fr       */
->>>>>>> 3fe93fb0f30362086c6239896615f9be24d76407
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +26,11 @@ typedef struct	s_m
 {
 	int		nb_l;
 	int		nb_w;
-<<<<<<< HEAD
 	int		**coord;
 	void	*win;
 	void	*mlx;
-}				t_m;
-=======
 	int		i;
 	int		j;
-	int		**coord;
 }				t_m;
 
 typedef struct	s_ml
@@ -59,7 +52,6 @@ typedef struct	s_v
 	int		ix;
 	int		iy;
 }				t_v;
->>>>>>> 3fe93fb0f30362086c6239896615f9be24d76407
 
 /*
 ** ==================== FUNCTIONS IN INIT_MAP.C ==================== **
