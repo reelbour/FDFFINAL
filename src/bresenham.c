@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 16:21:14 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/13 12:14:00 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/13 12:48:26 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,25 +152,6 @@ void	render_m(t_m *m)
 	if (!(v = (t_v*)malloc(sizeof(*v))))
 		ft_error(2);
 	init_ml(ml);
-	v->x0 = 100;
-	v->y0 = 100;
-	v->x1 = 200;
-	v->y1 = 200;
-	draw_line(v, ml);
-	v->x0 = 100;
-	v->y0 = 100;
-	v->x1 = 0;
-	v->y1 = 0;
-	draw_line(v, ml);
-	v->x0 = 100;
-	v->y0 = 100;
-	v->x1 = 200;
-	v->y1 = 0;
-	draw_line(v, ml);
-	v->x0 = 100;
-	v->y0 = 100;
-	v->x1 = 0;
-	v->y1 = 200;
-	draw_line(v, ml);
+	testcases(v, ml);
 	mlx_loop(ml->mlx_ptr);
 }
