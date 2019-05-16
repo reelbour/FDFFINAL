@@ -12,12 +12,6 @@
 
 #include "../inc/fdf.h"
 
-void	init_ml(t_ml *ml)
-{
-	ml->mlx_ptr = mlx_init();
-	ml->win_ptr = mlx_new_window(ml->mlx_ptr, W, H, "test");
-}
-//
 // void TraceSegmentTL(t_v *v, t_ml *ml)
 // {
 // 	v->dx = v->x1 - v->x0;
@@ -144,6 +138,32 @@ void	init_ml(t_ml *ml)
 // 	else if (v->x1 < v->x0 && v->y1 > v->y0)
 // 		TraceSegmentBL(v, ml);
 // }
+
+void 	draw_map(t_m *m, t_v *v, t_ml *ml)
+{
+		int i = 0;
+		int x = 50;
+		int y = 50;
+		//********** center right
+
+		v->y0 = 50;
+		v->y1 = 50;
+
+		while (i < m->nb_l)
+		{
+			int j = 0;
+			while (j < m->nb_l)
+			{
+				v->x1 = v->x0 + 25;
+				draw_line(v, ml);
+				v->x0 = v->x1;
+				j++;
+			}
+			v->x0 = x;
+			i++;
+		}
+}
+
 void	render_m(t_m *m)
 {
 	t_ml	*ml;
@@ -151,7 +171,13 @@ void	render_m(t_m *m)
 
 	if (!(v = (t_v*)malloc(sizeof(*v))))
 		ft_error(2);
-	init_ml(ml);
-	testcases(v, ml);
+	if (!(ml = (t_ml*)malloc(sizeof(*ml))))
+		ft_error(2);
+	//v->x0 = 20;
+	//v->y0 = 20;
+	ml->mlx_ptr = mlx_init();
+	ml->win_ptr = mlx_new_window(ml->mlx_ptr, W, H, "test");
+	//testcases(v, ml);
+	draw_map(m, v, ml);
 	mlx_loop(ml->mlx_ptr);
 }

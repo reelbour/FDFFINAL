@@ -16,9 +16,9 @@
 # include "../lib/minilibx/mlx.h"
 # include "../lib/gnl/get_next_line.h"
 # include <math.h>
-# define W 500
-# define H 500
-# define V (W / 100) * 5
+# define W 1500
+# define H 1200
+# define V 20
 # include <stdio.h>
 
 typedef struct	s_m
@@ -36,7 +36,7 @@ typedef struct	s_ml
 	void	*win_ptr;
 }				t_ml;
 
-typedef struct	s_v
+typedef struct	s_u
 {
 	int		x0;
 	int		x1;
@@ -55,6 +55,7 @@ void			init_m(t_m *m);
 void			read_m(int fd, t_m *m);
 int				count_words(char *str);
 void			stock_int_tab(char *str, t_m *m);
+void 			ft_secure_malloc(t_m *m, char **nb, char **split);
 
 /*
 ** ==================== FUNCTIONS IN VALIDATION.C ==================== **
@@ -62,6 +63,7 @@ void			stock_int_tab(char *str, t_m *m);
 
 void			ft_error(int n);
 void			render_m(t_m *m);
-void			init_ml(t_ml *ml);
 void			draw_line(t_v *v, t_ml *ml);
+void 			draw_map(t_m *m, t_v *v, t_ml *ml);
+void			testcases(t_v *v, t_ml *ml);
 #endif

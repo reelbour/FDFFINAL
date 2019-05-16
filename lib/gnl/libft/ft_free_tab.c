@@ -16,10 +16,15 @@ void	ft_free_tab(void **tab)
 {
 	int i;
 
+	if (!tab)
+		return ;
 	i = 0;
 	while (tab[i])
 	{
+		if (tab[i] == NULL)
+			continue ;
 		free(tab[i]);
+		tab[i] = NULL;
 		i++;
 	}
 	free(tab);
