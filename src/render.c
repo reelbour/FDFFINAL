@@ -1,183 +1,85 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresenham.c                                        :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 16:21:14 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/13 12:48:26 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/17 13:30:05 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-// void TraceSegmentTL(t_v *v, t_ml *ml)
-// {
-// 	v->dx = v->x1 - v->x0;
-// 	v->dy = v->y1 - v->y0;
-// 	v->dp = 2 * v->dy - v->dx; /* Valeur initiale de v->dp */
-// 	v->delta_e = 2 * v->dy;
-// 	v->delta_ne = 2 * (v->dy - v->dx);
-// 	int	x = v->x0;
-// 	int y = v->y0;
-//
-// 	mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, x, y, 0xFFFFFF);
-// 	while (x < v->x1)
-// 	{
-// 		if (v->dp <= 0)
-// 		{
-// 			v->dp = v->dp + v->delta_e;
-// 			x++;
-// 		}
-// 		else
-// 		{
-// 			v->dp = v->dp + v->delta_ne;
-// 			x++;
-// 			y++;
-// 		}
-// 		mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, x, y, 0xFFFFFF);
-// 	}
-// }
-//
-// void TraceSegmentTR(t_v *v, t_ml *ml)
-// {
-// 	v->dx = v->x1 - v->x0;
-// 	v->dy = v->y1 - v->y0;
-// 	int v->dp = 2 * v->dy - v->dx; /* Valeur initiale de v->dp */
-// 	int v->delta_e = 2 * v->dy;
-// 	int v->delta_ne = 2 * (v->dy - v->dx);
-// 	int x = v->x0;
-// 	int y = v->y0;
-//
-// 	mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, x, y, 0xFFFFFF);
-// 	while (x < v->x1)
-// 	{
-// 		if (v->dp <= 0) /* On choisit le point E */
-// 		{
-// 			v->dp = v->dp + v->delta_e; /* Nouveau v->dp */
-// 			x++; /* Calcul de x_p+1 */
-// 			/* y_p+1 = y_p */
-// 		}
-// 		else /* On choisit le point NE */
-// 		{
-// 			v->dp = v->dp + v->delta_ne; /* Nouveau v->dp */
-// 			x++; /* Calcul de x_p+1 */
-// 			y++; /* Calcul de y_p+1 */
-// 		}
-// 		mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, x, y, 0xFFFFFF);
-// 	}
-// }
-//
-// void TraceSegmentBL(t_v *v, t_ml *ml)
-// {
-// 	v->dx = v->x1 - v->x0;
-// 	v->dy = v->y1 - v->y0;
-// 	int v->dp = 2 * v->dy - v->dx; /* Valeur initiale de v->dp */
-// 	int v->delta_e = 2 * v->dy;
-// 	int v->delta_ne = 2 * (v->dy - v->dx);
-// 	int x = v->x0;
-// 	int y = v->y0;
-//
-// 	mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, x, y, 0xFFFFFF);
-// 	while (x < v->x1)
-// 	{
-// 		if (v->dp <= 0) /* On choisit le point E */
-// 		{
-// 			v->dp = v->dp + v->delta_e; /* Nouveau v->dp */
-// 			x++; /* Calcul de x_p+1 */
-// 			/* y_p+1 = y_p */
-// 		}
-// 		else /* On choisit le point NE */
-// 		{
-// 			v->dp = v->dp + v->delta_ne; /* Nouveau v->dp */
-// 			x++; /* Calcul de x_p+1 */
-// 			y++; /* Calcul de y_p+1 */
-// 		}
-// 		mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, x, y, 0xFFFFFF);
-// 	}
-// }
-//
-// void TraceSegmentBR(t_v *v, t_ml *ml)
-// {
-// 	v->dx = v->x1 - v->x0;
-// 	v->dy = v->y1 - v->y0;
-// 	int v->dp = 2 * v->dy - v->dx; /* Valeur initiale de v->dp */
-// 	int v->delta_e = 2 * v->dy;
-// 	int v->delta_ne = 2 * (v->dy - v->dx);
-// 	int x = v->x0;
-// 	int y = v->y0;
-//
-// 	mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, x, y, 0xFFFFFF);
-// 	while (x < v->x1)
-// 	{
-// 		if (v->dp <= 0) /* On choisit le point E */
-// 		{
-// 			v->dp = v->dp + v->delta_e; /* Nouveau v->dp */
-// 			x++; /* Calcul de x_p+1 */
-// 			/* y_p+1 = y_p */
-// 		}
-// 		else /* On choisit le point NE */
-// 		{
-// 			v->dp = v->dp + v->delta_ne; /* Nouveau v->dp */
-// 			x++; /* Calcul de x_p+1 */
-// 			y++; /* Calcul de y_p+1 */
-// 		}
-// 		mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, x, y, 0xFFFFFF);
-// 	}
-// }
-//
-// static void traceSegment(t_v *v, t_ml *ml)
-// {
-// 	if (v->x1 > v->x0 && v->y1 > v->y0)
-// 		TraceSegmentBR(v, ml);
-// 	else if (v->x1 > v->x0 && v->y1 < v->y0)
-// 		TraceSegmentTR(v, ml);
-// 	else if (v->x1 < v->x0 && v->y1 < v->y0)
-// 		TraceSegmentTL(v, ml);
-// 	else if (v->x1 < v->x0 && v->y1 > v->y0)
-// 		TraceSegmentBL(v, ml);
-// }
-
-void 	draw_map(t_m *m, t_v *v, t_ml *ml)
+void	draw_lines(t_mlx *m, int x, int y)
 {
-		int i = 0;
-		int x = 50;
-		int y = 50;
-		//********** center right
+	int t_xy[2];
 
-		v->y0 = 50;
-		v->y1 = 50;
-
-		while (i < m->nb_l)
-		{
-			int j = 0;
-			while (j < m->nb_l)
-			{
-				v->x1 = v->x0 + 25;
-				draw_line(v, ml);
-				v->x0 = v->x1;
-				j++;
-			}
-			v->x0 = x;
-			i++;
-		}
+	t_xy[0] = m->dx + (x - y);
+	t_xy[1] = m->dy + m->coord[y / m->sy][x / m->sx] * m->z + x + y;
+	if (x / m->sx < (m->nb_w / m->nb_l) - 1 && y / m->sy < m->nb_l)
+		draw_line(m, t_xy, m->dx + ((x + m->sx) - y),
+		m->dy + m->coord[y / m->sy][x / m->sx] * m->z + (x + m->sx) + y);
+	if (y / m->sy < m->nb_l - 1 && x / m->sx < (m->nb_w / m->nb_l))
+		draw_line(m, t_xy, m->dx + (x - (y + m->sy)),
+		m->dy + m->coord[y / m->sy + 1][x / m->sx] * m->z + (y + m->sy));
 }
 
-void	render_m(t_m *m)
+void	init_draw(t_mlx *m)
 {
-	t_ml	*ml;
-	t_v		*v;
+	if (m->check == 0)
+	{
+		m->z = -5;
+		m->dx = W * 0.4;
+		m->dy = 20;
+		m->sx = (W * 0.7) / ((m->nb_w / m->nb_l) - 1);
+		m->sy = (H * 0.5) / (m->nb_l - 1);
+		m->clr = 0xFFFFFF;
+	}
+	m->check++;
+}
 
-	if (!(v = (t_v*)malloc(sizeof(*v))))
-		ft_error(2);
-	if (!(ml = (t_ml*)malloc(sizeof(*ml))))
-		ft_error(2);
-	//v->x0 = 20;
-	//v->y0 = 20;
-	ml->mlx_ptr = mlx_init();
-	ml->win_ptr = mlx_new_window(ml->mlx_ptr, W, H, "test");
-	//testcases(v, ml);
-	draw_map(m, v, ml);
-	mlx_loop(ml->mlx_ptr);
+void	draw(t_mlx *m)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	init_draw(m);
+	while (x / m->sx < (m->nb_w / m->nb_l) || y / m->sy < m->nb_l - 1)
+	{
+		if (x / m->sx == (m->nb_w / m->nb_l))
+		{
+			x = 0;
+			y += m->sy;
+		}
+		draw_lines(m, x, y);
+		x += m->sx;
+	}
+}
+
+void	render_m(t_mlx *m)
+{
+	if (!(m->mlx = ft_memalloc(sizeof(m->mlx))))
+		return ;
+	if (!(m->win = ft_memalloc(sizeof(m->win))))
+		return ;
+	m->mlx = mlx_init();
+	m->win = mlx_new_window(m->mlx, W, H, "test");
+	draw(m);
+	printf("%s%d\n", "m->nb_w : ", m->nb_w);
+	printf("%s%d\n", "m->nb_l : ", m->nb_l);
+	printf("%s%d\n", "m->z : ", m->z);
+	printf("%s%d\n", "m->dx : ", m->dx);
+	printf("%s%d\n", "m->dy : ", m->dy);
+	printf("%s%d\n", "m->sx : ", m->sx);
+	printf("%s%d\n", "m->sy : ", m->sy);
+	printf("%s%d\n", "m->x0 : ", m->x0);
+	printf("%s%d\n", "m->y0 : ", m->y0);
+	printf("%s%d\n", "m->x1 : ", m->x1);
+	printf("%s%d\n", "m->y1 : ", m->y1);
+	printf("%s%d\n", "m->e : ", m->e);
+	mlx_loop(m->mlx);
 }

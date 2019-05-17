@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:59:00 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/08 14:45:44 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/16 11:42:38 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <limits.h>
+# define BUFF_SIZE 32
 
 typedef struct		s_list
 {
@@ -89,4 +94,7 @@ void				ft_lstfree(t_list *lst);
 int					ft_countwords(const char *str, char c);
 int					ft_isspace(int c);
 void				ft_isnegative(int *n, int *negative);
+int					get_next_line(const int fd, char **line);
+int					ft_lstdestroy(t_list **lst);
+void				ft_lstrev(t_list **alst);
 #endif

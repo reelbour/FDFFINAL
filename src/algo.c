@@ -6,218 +6,218 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 11:25:52 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/13 12:19:27 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/17 12:45:26 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+ #include "../inc/fdf.h"
 
-void	draw_line(t_v *v, t_ml *ml)
-{
-	v->dx = v->x1 - v->x0;
-	if (v->dx != 0)
-	{
-		if (v->dx > 0)
-		{
-			v->dy = v->y1 - v->y0;
-			if (v->dy != 0)
-			{
-				if (v->dy > 0)
-				{
-					if (v->dx >= v->dy)
-					{
-						v->e = v->dx;
-						v->dx = v->e * 2;
-						v->dy = v->dy * 2;
-						while (v->x0 < v->x1)
-						{
-							mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-							v->x0++;
-							v->e -= v->dy;
-							if (v->e <= 0)
-							{
-								v->y0++;
-								v->e += v->dx;
-							}
-						}
-					}
-					else
-					{
-						v->e = v->dy;
-						v->dy = v->e * 2;
-						v->dx = v->dx * 2;
-						while (v->y0 < v->y1)
-						{
-							mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-							v->y0++;
-							v->e -= v->dx;
-							if (v->e <= 0)
-							{
-								v->x0++;
-								v->e += v->dy;
-							}
-						}
-					}
-				}
-				else
-				{
-					if (v->dx >= -v->dy)
-					{
-						v->e = v->dx;
-						v->dx *= 2;
-						v->dy *= 2;
-						while (v->x0 < v->x1)
-						{
-							mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-							v->x0++;
-							v->e += v->dy;
-							if (v->e <= 0)
-							{
-								v->y0 -= 1;
-								v->e += v->dx;
-							}
-						}
-					}
-					else
-					{
-						v->e = v->dy;
-						v->dy *= 2;
-						v->dx *= 2;
-						while (v->y1 < v->y0)
-						{
-							mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-							v->y0--;
-							v->e += v->dx;
-							if (v->e > 0)
-							{
-								v->x0++;
-								v->e += v->dy;
-							}
-						}
-					}
-				}
-			}
-			else
-			{
-				while (v->x0 < v->x1)
-				{
-					mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-					v->x0++;
-				}
-			}
-		}
-		else
-		{
-			v->dy = v->y1 - v->y0;
-			if (v->dy != 0)
-			{
-				if (v->dy > 0)
-				{
-					if (-v->dx >= v->dy)
-					{
-						v->e = v->dx;
-						v->dx *= 2;
-						v->dy *= 2;
-						while (v->x0 > v->x1)
-						{
-							mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-							v->x0--;
-							v->e += v->dy;
-							if (v->e >= 0)
-							{
-								v->y0++;
-								v->e += v->dx;
-							}
-						}
-					}
-					else
-					{
-						v->e = v->dy;
-						v->dy *= 2;
-						v->dx *= 2;
-						while (v->y0 < v->y1)
-						{
-							mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-							v->y0++;
-							v->e += v->dx;
-							if (v->e <= 0)
-							{
-								v->x0--;
-								v->e += v->dy;
-							}
-						}
-					}
-				}
-				else
-				{
-					if (v->dx <= v->dy)
-					{
-						v->e = v->dx;
-						v->dx *= 2;
-						v->dy *= 2;
-						while (v->x0 > v->x1)
-						{
-							mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-							v->x0--;
-							v->e -= v->dy;
-							if (v->e >= 0)
-							{
-								v->y0--;
-								v->e += v->dx;
-							}
-						}
-					}
-					else
-					{
-						v->e = v->dy;
-						v->dy *= 2;
-						v->dx *= 2;
-						while (v->y0 > v->y1)
-						{
-							mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-							v->y0--;
-							v->e -= v->dx;
-							if (v->e >= 0)
-							{
-								v->x0--;
-								v->e += v->dy;
-							}
-						}
-					}
-				}
-			}
-			else
-			{
-				while (v->x0 > v->x1)
-				{
-					mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-					v->x0--;
-				}
-			}
-		}
-	}
-	else
-	{
-		v->dy = v->y1 - v->y0;
-		if (v->dy != 0)
-		{
-			if (v->dy > 0)
-			{
-				while (v->y0 < v->y1)
-				{
-					mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-					v->y0++;
-				}
-			}
-			else
-			{
-				while (v->y0 > v->y1)
-				{
-					mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x0, v->y0, 0xFFFFFF);
-					v->y0--;
-				}
-			}
-		}
-	}
-	mlx_pixel_put(ml->mlx_ptr, ml->win_ptr, v->x1, v->y1, 0xFFFFFF);
-}
+ void	draw_line(t_mlx *m, int *t_xy, int x, int y)
+ {
+ 	m->dx = m->x1 - m->x0;
+ 	if (m->dx != 0)
+ 	{
+ 		if (m->dx > 0)
+ 		{
+ 			m->dy = m->y1 - m->y0;
+ 			if (m->dy != 0)
+ 			{
+ 				if (m->dy > 0)
+ 				{
+ 					if (m->dx >= m->dy)
+ 					{
+ 						m->e = m->dx;
+ 						m->dx = m->e * 2;
+ 						m->dy = m->dy * 2;
+ 						while (m->x0 < m->x1)
+ 						{
+ 							mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 							m->x0++;
+ 							m->e -= m->dy;
+ 							if (m->e <= 0)
+ 							{
+ 								m->y0++;
+ 								m->e += m->dx;
+ 							}
+ 						}
+ 					}
+ 					else
+ 					{
+ 						m->e = m->dy;
+ 						m->dy = m->e * 2;
+ 						m->dx = m->dx * 2;
+ 						while (m->y0 < m->y1)
+ 						{
+ 							mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 							m->y0++;
+ 							m->e -= m->dx;
+ 							if (m->e <= 0)
+ 							{
+ 								m->x0++;
+ 								m->e += m->dy;
+ 							}
+ 						}
+ 					}
+ 				}
+ 				else
+ 				{
+ 					if (m->dx >= -m->dy)
+ 					{
+ 						m->e = m->dx;
+ 						m->dx *= 2;
+ 						m->dy *= 2;
+ 						while (m->x0 < m->x1)
+ 						{
+ 							mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 							m->x0++;
+ 							m->e += m->dy;
+ 							if (m->e <= 0)
+ 							{
+ 								m->y0 -= 1;
+ 								m->e += m->dx;
+ 							}
+ 						}
+ 					}
+ 					else
+ 					{
+ 						m->e = m->dy;
+ 						m->dy *= 2;
+ 						m->dx *= 2;
+ 						while (m->y1 < m->y0)
+ 						{
+ 							mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 							m->y0--;
+ 							m->e += m->dx;
+ 							if (m->e > 0)
+ 							{
+ 								m->x0++;
+ 								m->e += m->dy;
+ 							}
+ 						}
+ 					}
+ 				}
+ 			}
+ 			else
+ 			{
+ 				while (m->x0 < m->x1)
+ 				{
+ 					mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 					m->x0++;
+ 				}
+ 			}
+ 		}
+ 		else
+ 		{
+ 			m->dy = m->y1 - m->y0;
+ 			if (m->dy != 0)
+ 			{
+ 				if (m->dy > 0)
+ 				{
+ 					if (-m->dx >= m->dy)
+ 					{
+ 						m->e = m->dx;
+ 						m->dx *= 2;
+ 						m->dy *= 2;
+ 						while (m->x0 > m->x1)
+ 						{
+ 							mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 							m->x0--;
+ 							m->e += m->dy;
+ 							if (m->e >= 0)
+ 							{
+ 								m->y0++;
+ 								m->e += m->dx;
+ 							}
+ 						}
+ 					}
+ 					else
+ 					{
+ 						m->e = m->dy;
+ 						m->dy *= 2;
+ 						m->dx *= 2;
+ 						while (m->y0 < m->y1)
+ 						{
+ 							mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 							m->y0++;
+ 							m->e += m->dx;
+ 							if (m->e <= 0)
+ 							{
+ 								m->x0--;
+ 								m->e += m->dy;
+ 							}
+ 						}
+ 					}
+ 				}
+ 				else
+ 				{
+ 					if (m->dx <= m->dy)
+ 					{
+ 						m->e = m->dx;
+ 						m->dx *= 2;
+ 						m->dy *= 2;
+ 						while (m->x0 > m->x1)
+ 						{
+ 							mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 							m->x0--;
+ 							m->e -= m->dy;
+ 							if (m->e >= 0)
+ 							{
+ 								m->y0--;
+ 								m->e += m->dx;
+ 							}
+ 						}
+ 					}
+ 					else
+ 					{
+ 						m->e = m->dy;
+ 						m->dy *= 2;
+ 						m->dx *= 2;
+ 						while (m->y0 > m->y1)
+ 						{
+ 							mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 							m->y0--;
+ 							m->e -= m->dx;
+ 							if (m->e >= 0)
+ 							{
+ 								m->x0--;
+ 								m->e += m->dy;
+ 							}
+ 						}
+ 					}
+ 				}
+ 			}
+ 			else
+ 			{
+ 				while (m->x0 > m->x1)
+ 				{
+ 					mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 					m->x0--;
+ 				}
+ 			}
+ 		}
+ 	}
+ 	else
+ 	{
+ 		m->dy = m->y1 - m->y0;
+ 		if (m->dy != 0)
+ 		{
+ 			if (m->dy > 0)
+ 			{
+ 				while (m->y0 < m->y1)
+ 				{
+ 					mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 					m->y0++;
+ 				}
+ 			}
+ 			else
+ 			{
+ 				while (m->y0 > m->y1)
+ 				{
+ 					mlx_pixel_put(m->mlx, m->win, m->x0, m->y0, 0xFFFFFF);
+ 					m->y0--;
+ 				}
+ 			}
+ 		}
+ 	}
+ 	mlx_pixel_put(m->mlx, m->win, m->x1, m->y1, 0xFFFFFF);
+ }

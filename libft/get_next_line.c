@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammou- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 11:38:21 by ahammou-          #+#    #+#             */
-/*   Updated: 2018/12/19 12:59:19 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/17 12:52:44 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char			*ft_strjoin_free(char *s1, char *s2, int d)
 {
@@ -53,8 +53,6 @@ int				get_line(char **endl, char **line, const int fd, int ret)
 		tmp = ft_strdup(endl[fd] + len + 1);
 		free(endl[fd]);
 		endl[fd] = tmp;
-		//if (endl[fd][0] == '\0')
-		//	ft_strdel(&endl[fd]);
 	}
 	else if (endl[fd][len] == '\0')
 	{

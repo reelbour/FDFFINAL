@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdestroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/17 12:45:21 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/05/17 12:51:28 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/05/17 12:51:31 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+int		ft_lstdestroy(t_list **lst)
 {
-	int		fd;
-	t_mlx	*m;
+	t_list *save;
 
-	if (ac != 2)
-		ft_putchar('\n');
-	else
+	while (*lst)
 	{
-		if (!(fd = open(av[1], O_RDONLY)) && fd < 0)
-			ft_error(1);
-		if (!(m = ft_memalloc(sizeof(*m))))
-			ft_error(2);
-		read_m(fd, m);
-		render_m(m);
+		save = *lst;
+		*lst = (*lst)->next;
+		ft_memdel(&(save->content));
+		ft_memdel((void **)&save);
 	}
+	*lst = NULL;
 	return (0);
 }

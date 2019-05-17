@@ -3,67 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reelbour <reelbour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 10:53:24 by reelbour          #+#    #+#             */
-/*   Updated: 2019/05/13 12:06:57 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/05/17 12:50:09 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/05/17 12:56:39 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "../lib/minilibx/mlx.h"
-# include "../lib/gnl/get_next_line.h"
+# include "../mlx/mlx.h"
+# include "../libft/libft.h"
 # include <math.h>
 # define W 1500
 # define H 1200
 # define V 20
 # include <stdio.h>
 
-typedef struct	s_m
+/*
+** STRUCTURE IMAGES **
+*/
+
+typedef struct	s_i
 {
+	void	*ptr;
+	char	*data;
+	int		bpp;
+	int		sizeline;
+	int		endian;
+}				t_i;
+
+/*
+** GLOBAL STRUCTURE **
+*/
+
+typedef struct	s_mlx
+{
+	void	*mlx;
+	void	*win;
+	t_i		*img;
 	int		nb_l;
 	int		nb_w;
-	int		x;
-	int		y;
-	int		**coord;
-}				t_m;
-
-typedef struct	s_ml
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-}				t_ml;
-
-typedef struct	s_u
-{
+	int		e;
+	int		z;
+	int		sx;
+	int		sy;
 	int		x0;
-	int		x1;
 	int		y0;
+	int		x1;
 	int		y1;
 	int		dx;
 	int		dy;
-	int		e;
-}				t_v;
+	int		clr;
+	int		check;
+	int		**coord;
+}				t_mlx;
 
 /*
 ** ==================== FUNCTIONS IN INIT_MAP.C ==================== **
 */
 
-void			init_m(t_m *m);
-void			read_m(int fd, t_m *m);
+void			read_m(int fd, t_mlx *m);
 int				count_words(char *str);
-void			stock_int_tab(char *str, t_m *m);
-void 			ft_secure_malloc(t_m *m, char **nb, char **split);
+void			stock_int_tab(char *str, t_mlx *m);
+void			ft_secure_malloc(t_mlx *m, char **nb, char **split);
 
 /*
 ** ==================== FUNCTIONS IN VALIDATION.C ==================== **
 */
 
 void			ft_error(int n);
-void			render_m(t_m *m);
-void			draw_line(t_v *v, t_ml *ml);
-void 			draw_map(t_m *m, t_v *v, t_ml *ml);
-void			testcases(t_v *v, t_ml *ml);
+
+/*
+** ==================== FUNCTIONS IN RENDER.C ==================== **
+*/
+
+void			render_m(t_mlx *m);
+void			draw_lines(t_mlx *m, int x, int y);
+void			draw_line(t_mlx *m, int *t_xy, int x, int y);
+void			testcases(t_mlx *m);
 #endif

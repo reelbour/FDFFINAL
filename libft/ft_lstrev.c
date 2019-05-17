@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/17 12:45:21 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/05/17 12:51:47 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/05/17 12:51:49 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void		ft_lstrev(t_list **alst)
 {
-	int		fd;
-	t_mlx	*m;
+	t_list *cur;
+	t_list *prev;
+	t_list *next;
 
-	if (ac != 2)
-		ft_putchar('\n');
-	else
+	prev = NULL;
+	if (!alst)
+		return ;
+	cur = *alst;
+	while (cur)
 	{
-		if (!(fd = open(av[1], O_RDONLY)) && fd < 0)
-			ft_error(1);
-		if (!(m = ft_memalloc(sizeof(*m))))
-			ft_error(2);
-		read_m(fd, m);
-		render_m(m);
+		next = cur->next;
+		cur->next = prev;
+		prev = cur;
+		cur = next;
 	}
-	return (0);
+	*alst = prev;
 }
