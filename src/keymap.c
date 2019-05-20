@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   keymap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 12:57:55 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/17 13:01:00 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/05/19 07:46:25 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/05/19 08:33:15 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void	ft_error(int nb)
+int	deal_key(int key, void *param)
 {
-	if (nb == 1)
-		ft_putendl("can't open the file descriptor");
-	if (nb == 2)
-		ft_putendl("malloc failure");
-	if (nb == 3)
-		ft_putendl("error");
-	exit(0);
+	ft_putnbr(key);
+	return (0);
+}
+
+int	deal_mouse(int scroll, void *param)
+{
+	ft_putnbr(scroll);
+	return (0);
 }

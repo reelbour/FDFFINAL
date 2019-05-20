@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 12:57:55 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/17 13:01:00 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/05/20 11:19:08 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void	ft_error(int nb)
+int		main(int ac, char **av)
 {
-	if (nb == 1)
-		ft_putendl("can't open the file descriptor");
-	if (nb == 2)
-		ft_putendl("malloc failure");
-	if (nb == 3)
-		ft_putendl("error");
-	exit(0);
+	int		fd;
+	t_mlx	*m;
+
+	if (ac != 2)
+		ft_putchar('\n');
+	else
+	{
+		if (!(fd = open(av[1], O_RDONLY)) && fd < 0)
+			ft_error(1);
+		if (!(m = ft_memalloc(sizeof(*m))))
+			ft_error(2);
+		read_m(fd, m);
+		render_m(m);
+	}
+	return (0);
 }

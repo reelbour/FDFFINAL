@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 12:57:55 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/17 13:01:00 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/05/08 14:43:00 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/05/08 14:43:27 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-void	ft_error(int nb)
+size_t	ft_abs(int n)
 {
-	if (nb == 1)
-		ft_putendl("can't open the file descriptor");
-	if (nb == 2)
-		ft_putendl("malloc failure");
-	if (nb == 3)
-		ft_putendl("error");
-	exit(0);
+	if (n < 0)
+		return (-n);
+	else
+		return (n);
 }

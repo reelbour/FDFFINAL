@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   ft_lstrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 12:57:55 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/17 13:01:00 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/05/17 12:51:47 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/05/17 12:51:49 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-void	ft_error(int nb)
+void		ft_lstrev(t_list **alst)
 {
-	if (nb == 1)
-		ft_putendl("can't open the file descriptor");
-	if (nb == 2)
-		ft_putendl("malloc failure");
-	if (nb == 3)
-		ft_putendl("error");
-	exit(0);
+	t_list *cur;
+	t_list *prev;
+	t_list *next;
+
+	prev = NULL;
+	if (!alst)
+		return ;
+	cur = *alst;
+	while (cur)
+	{
+		next = cur->next;
+		cur->next = prev;
+		prev = cur;
+		cur = next;
+	}
+	*alst = prev;
 }
