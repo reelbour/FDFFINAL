@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 16:21:14 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/19 08:45:11 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/20 16:55:32 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,36 @@ void	draw_lines(t_mlx *m, int x, int y)
 	tabxy[0] = m->dx + (x - y);
 	tabxy[1] = m->dy + m->coord[y / m->sy][x / m->sx] * m->z
 		+ x + y;
-	if (x / m->sx < (m->nb_w / m->nb_l) - 1 && y / m->sy < m->nb_l)
+	if (x / m->sx < (m->nb_w / m->nb_l) && y / m->sy < m->nb_l)
+		draw_line(m, tabxy, m->dx + ((x + m->sx) - y),
+		m->dy + m->coord[y / m->sy][x / m->sx + 1] +
+		(x + m->sx) + y);
+	if (x / m->sx == (m->nb_w / m->nb_l) && y / m->sy < m->nb_l - 1)
+		draw_line(m, tabxy, m->dx + (x - (y + m->sy)),
+		m->dy + m->coord[y / m->sy + 1][x / m->sx] +
+		x + (y + m->sy));
+	if (y / m->sy < m->nb_l - 1 && x / m->sx < m->nb_w / m->nb_l)
+		draw_line(m, tabxy, m->dx + (x - (y + m->sy)),
+		m->dy + m->coord[y / m->sy + 1][x / m->sx] +
+		x + (y + m->sy));
+}
+
+void	draw_iso(t_mlx *m, int x, int y)
+{
+	int		tabxy[2];
+
+	tabxy[0] = m->dx + (x - y);
+	tabxy[1] = m->dy + m->coord[y / m->sy][x / m->sx] * m->z
+		+ x + y;
+	if (x / m->sx < (m->nb_w / m->nb_l) && y / m->sy < m->nb_l)
 		draw_line(m, tabxy, m->dx + ((x + m->sx) - y),
 		m->dy + m->coord[y / m->sy][x / m->sx + 1] * m->z +
 		(x + m->sx) + y);
-	if (y / m->sy < m->nb_l - 1 && x / m->sx < (m->nb_w / m->nb_l))
+	if (x / m->sx == (m->nb_w / m->nb_l) && y / m->sy < m->nb_l - 1)
+		draw_line(m, tabxy, m->dx + (x - (y + m->sy)),
+		m->dy + m->coord[y / m->sy + 1][x / m->sx] * m->z +
+		x + (y + m->sy));
+	if (y / m->sy < m->nb_l - 1 && x / m->sx < m->nb_w / m->nb_l)
 		draw_line(m, tabxy, m->dx + (x - (y + m->sy)),
 		m->dy + m->coord[y / m->sy + 1][x / m->sx] * m->z +
 		x + (y + m->sy));
@@ -60,8 +85,8 @@ void	init_draw(t_mlx *m)
 		m->z = -5;
 		m->dx = W * 0.4;
 		m->dy = 20;
-		m->sx = (W * 0.7) / (m->nb_w / m->nb_l - 1);
-		m->sy = (H * 0.5) / (m->nb_l - 1);
+		m->sx = (W * 0.5) / (m->nb_w / m->nb_l - 1);
+		m->sy = (H * 0.3) / (m->nb_l - 1);
 		m->clr = 0x00FFFF;
 	}
 	m->check++;
@@ -75,7 +100,7 @@ void	draw(t_mlx *m)
 	x = 0;
 	y = 0;
 	init_draw(m);
-	while (x / m->sx < (m->nb_w / m->nb_l) - 1 || y / m->sy < m->nb_l - 1)
+	while (x / m->sx < (m->nb_w / m->nb_l) || y / m->sy < m->nb_l - 1)
 	{
 		if (x / m->sx == (m->nb_w / m->nb_l))
 		{
@@ -84,6 +109,10 @@ void	draw(t_mlx *m)
 		}
 		draw_lines(m, x, y);
 		x += m->sx;
+		if (x / m->sx == (m->nb_w / m->nb_l))
+		{
+			draw_lines(m, x, y);
+		}
 	}
 }
 
