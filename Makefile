@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jreynaer <jreynaer@student.42.fr>          +#+  +:+       +#+         #
+#    By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/12/11 12:21:01 by jreynaer          #+#    #+#              #
-#    Updated: 2019/05/17 12:57:25 by ahammou-         ###   ########.fr        #
+#    Created: 2019/05/19 08:31:57 by ahammou-          #+#    #+#              #
+#    Updated: 2019/05/19 08:32:49 by ahammou-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
-OBJ = src/algo.o src/init_map.o src/main.o src/render.o src/validation.o 
-SRC = src/algo.c src/init_map.c src/main.c src/render.c src/validation.c \
+OBJ = src/init_map.o src/main.o src/render.o src/validation.o src/keymap.o
+SRC = src/init_map.c src/main.c src/render.c src/validation.c src/keymap.c\
 	  libft/libft.a
 FLAGS = -Wall -Wextra -Werror
 

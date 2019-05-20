@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:50:09 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/17 12:56:39 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/19 08:33:04 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include <math.h>
-# define W 1500
-# define H 1200
-# define V 20
+# define W 1560
+# define H 1300
 # include <stdio.h>
 
 /*
@@ -45,14 +44,11 @@ typedef struct	s_mlx
 	t_i		*img;
 	int		nb_l;
 	int		nb_w;
-	int		e;
 	int		z;
 	int		sx;
 	int		sy;
 	int		x0;
 	int		y0;
-	int		x1;
-	int		y1;
 	int		dx;
 	int		dy;
 	int		clr;
@@ -80,7 +76,14 @@ void			ft_error(int n);
 */
 
 void			render_m(t_mlx *m);
+void			draw(t_mlx *m);
 void			draw_lines(t_mlx *m, int x, int y);
-void			draw_line(t_mlx *m, int *t_xy, int x, int y);
-void			testcases(t_mlx *m);
+void			draw_line(t_mlx *m, int *tabxy, int x, int y);
+
+/*
+** ==================== FUNCTIONS IN KEYMAP.C ==================== **
+*/
+
+int				deal_key(int key, void *param);
+int				deal_mouse(int scroll, void *param);
 #endif
