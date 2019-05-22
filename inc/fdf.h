@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:50:09 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/19 08:33:04 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/22 17:13:55 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,11 @@
 # define H 1300
 # include <stdio.h>
 
-/*
-** STRUCTURE IMAGES **
-*/
-
-typedef struct	s_i
+typedef struct	s_dot
 {
-	void	*ptr;
-	char	*data;
-	int		bpp;
-	int		sizeline;
-	int		endian;
-}				t_i;
+	int		x;
+	int		y;
+}				t_dot;
 
 /*
 ** GLOBAL STRUCTURE **
@@ -41,10 +34,9 @@ typedef struct	s_mlx
 {
 	void	*mlx;
 	void	*win;
-	t_i		*img;
 	int		nb_l;
 	int		nb_w;
-	int		z;
+	float	z;
 	int		sx;
 	int		sy;
 	int		x0;
@@ -53,6 +45,7 @@ typedef struct	s_mlx
 	int		dy;
 	int		clr;
 	int		check;
+	float	zoom;
 	int		**coord;
 }				t_mlx;
 
@@ -78,7 +71,9 @@ void			ft_error(int n);
 void			render_m(t_mlx *m);
 void			draw(t_mlx *m);
 void			draw_lines(t_mlx *m, int x, int y);
-void			draw_line(t_mlx *m, int *tabxy, int x, int y);
+void			draw_line(t_mlx *m, t_dot tabxy, int x, int y);
+t_dot			rasterize_para(t_mlx *m, int x, int y, int z);
+t_dot			rasterize_iso(t_mlx *m, int x, int y, int z);
 
 /*
 ** ==================== FUNCTIONS IN KEYMAP.C ==================== **
