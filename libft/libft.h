@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:59:00 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/16 11:42:38 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/23 14:44:58 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *news);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-void				ft_free_tab(void **tab);
+void				ft_free_tab_str(char **tab);
 size_t				ft_abs(int n);
 void				ft_lstprint(t_list *list);
 void				ft_lstfree(t_list *lst);
@@ -97,4 +97,5 @@ void				ft_isnegative(int *n, int *negative);
 int					get_next_line(const int fd, char **line);
 int					ft_lstdestroy(t_list **lst);
 void				ft_lstrev(t_list **alst);
+void				ft_free_tab_void(void **tab);
 #endif

@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_free_tab_str.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/21 10:03:52 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/23 11:27:19 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/05/23 14:31:51 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/05/23 16:48:40 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+void	ft_free_tab_str(char **tab)
 {
-	char *str;
+	int	i;
 
-	str = (char *)malloc(size + 1);
-	if (str == NULL)
-		return (NULL);
-	ft_memset(str, (int)'\0', size + 1);
-	return (str);
+	if (!tab)
+		return ;
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }

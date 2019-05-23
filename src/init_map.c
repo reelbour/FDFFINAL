@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/17 13:13:26 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/23 16:48:38 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 ** Convert char** into int**coord **
 */
 
-void 	ft_convert_int(t_mlx *m, char **split, char **nb)
+void	ft_convert_int(t_mlx *m, char **split)
 {
 	int		i;
 	int		j;
+	char	**nb;
 
+	nb = NULL;
 	i = 0;
 	while (split[i])
 	{
@@ -32,42 +34,27 @@ void 	ft_convert_int(t_mlx *m, char **split, char **nb)
 		while (j < (m->nb_w / m->nb_l))
 		{
 			m->coord[i][j] = ft_atoi(nb[j]);
-			ft_strdel(&nb[j]);
 			j++;
 		}
+		ft_free_tab_str(nb);
 		i++;
 	}
-}
-
-/*
-** Secure malloc for conversion **
-*/
-
-void	ft_secure_malloc(t_mlx *m, char **nb, char **split)
-{
-	if (!(split = (char**)malloc((sizeof(char*) * m->nb_l) + 1)))
-		ft_error_free(2, (void**)split);
-	if (!(m->coord = (int**)malloc((sizeof(int*) * m->nb_l) + 1)))
-		ft_error_free(2, (void**)m->coord);
-	if (!(nb = (char**)malloc((sizeof(char*) * m->nb_l) + 1)))
-		ft_error_free(2, (void**)nb);
+	ft_free_tab_str(split);
 }
 
 /*
 ** Stores split result into int **coord **
 */
 
-void	stock_int_tab(char *str, t_mlx *m)
+void	stock_int_tab(char **str, t_mlx *m)
 {
-	char	**nb;
 	char	**split;
 
-	ft_secure_malloc(m, nb, split);
-	if (!(split = ft_strsplit(str, '\n')))
+	if (!(m->coord = (int**)malloc((sizeof(int*) * m->nb_l) + 1)))
+		ft_error_free(2, (void**)m->coord);
+	if (!(split = ft_strsplit(*str, '\n')))
 		ft_error_free(2, (void**)split);
-	ft_convert_int(m, split, nb);
-	ft_free_tab((void**)split);
-	ft_memdel((void**)&str);
+	ft_convert_int(m, split);
 }
 
 /*
@@ -80,6 +67,7 @@ void	read_m(int fd, t_mlx *m)
 	char	*str;
 	char	*line;
 
+	line = NULL;
 	str = NULL;
 	start = 0;
 	while (get_next_line(fd, &line) > 0)
@@ -90,6 +78,7 @@ void	read_m(int fd, t_mlx *m)
 			if (!(str = ft_strdup(line)))
 				ft_error_free(2, (void**)&str);
 			start = 1;
+			free(line);
 		}
 		else if (!(str = ft_strjoin_free(str, line, 3)))
 			ft_error_free(2, (void**)&str);
@@ -97,5 +86,6 @@ void	read_m(int fd, t_mlx *m)
 			ft_error_free(2, (void**)&str);
 	}
 	m->nb_w = ft_countwords(str, ' ') - 1;
-	stock_int_tab(str, m);
+	stock_int_tab(&str, m);
+	free(str);
 }

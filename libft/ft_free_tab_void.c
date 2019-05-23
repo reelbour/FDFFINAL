@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_tab.c                                      :+:      :+:    :+:   */
+/*   ft_free_tab_void.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/30 18:40:50 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/04/30 18:43:55 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/05/23 14:43:06 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/05/23 14:44:06 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_tab(void **tab)
+void	ft_free_tab_void(void **tab)
 {
-	int i;
+	int	i;
+	int	j;
 
 	if (!tab)
 		return ;
 	i = 0;
 	while (tab[i])
 	{
-		if (tab[i] == NULL)
-			continue ;
+		j = 0;
+		while (&tab[i][j])
+		{
+			free(&tab[i][j]);
+			j++;
+		}
 		free(tab[i]);
-		tab[i] = NULL;
 		i++;
 	}
 	free(tab);

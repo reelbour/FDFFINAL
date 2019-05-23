@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/17 12:45:21 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/23 16:53:13 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		main(int ac, char **av)
 			ft_error_free(2, (void**)&m);
 		read_m(fd, m);
 		render_m(m);
+		free(m);
 	}
 	return (0);
 }

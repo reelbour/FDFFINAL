@@ -6,17 +6,16 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:57:55 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/17 13:01:00 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/23 14:37:24 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void 	ft_error_free(int nb, void **ptr)
+void	ft_error_free(int nb, void **ptr)
 {
 	if (nb == 2)
 	{
-		ft_free_tab(ptr);
 		ft_putendl("malloc failure");
 	}
 }

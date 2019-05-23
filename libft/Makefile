@@ -6,7 +6,7 @@
 #    By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/10 14:03:14 by ahammou-          #+#    #+#              #
-#    Updated: 2019/05/17 12:50:58 by ahammou-         ###   ########.fr        #
+#    Updated: 2019/05/23 14:45:34 by ahammou-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ FILE = ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr ft_memcmp\
 	ft_strmapi ft_strequ ft_strnequ ft_strsub ft_strjoin ft_strtrim\
 	ft_strsplit ft_itoa ft_lstnew ft_lstdelone ft_lstdel ft_lstadd \
 	ft_lstiter ft_lstmap ft_lstfree ft_isspace ft_lstprint ft_countwords\
-	ft_isnegative ft_free_tab ft_abs get_next_line ft_lstdestroy ft_lstrev 
+	ft_isnegative ft_free_tab_str ft_abs get_next_line ft_lstdestroy ft_lstrev\
+	ft_free_tab_void\
 
 C = $(addsuffix .c, $(FILE))
 O = $(addsuffix .o, $(FILE))

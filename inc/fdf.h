@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:50:09 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/22 17:13:55 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/23 16:56:50 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,23 @@
 
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
-# include "keycode.h"
 # include <math.h>
 # define W 1560
 # define H 1300
-# define Z_MIN 0.1
-# define Z_MAX 6.9
+# define Z_MIN 0.2
+# define Z_MAX 3
+# define A_MIN -500
+# define A_MAX 500
+# define Q_KEY 12
+# define A_KEY 0
+# define LEFT_KEY 123
+# define RIGHT_KEY 124
+# define DOWN_KEY 125
+# define UP_KEY 126
+# define ESC_KEY 53
+# define PLUS_KEY 69
+# define MINUS_KEY 78
+
 # include <stdio.h>
 
 typedef struct	s_dot
@@ -58,16 +69,15 @@ typedef struct	s_mlx
 
 void			read_m(int fd, t_mlx *m);
 int				count_words(char *str);
-void			stock_int_tab(char *str, t_mlx *m);
-void			ft_secure_malloc(t_mlx *m, char **nb, char **split);
-void 			convert_int(t_mlx *m, char ***split, char ***nb);
+void			stock_int_tab(char **str, t_mlx *m);
+void			convert_int(t_mlx *m, char **split);
 
 /*
 ** ==================== FUNCTIONS IN VALIDATION.C ==================== **
 */
 
 void			ft_error(int nb);
-void 			ft_error_free(int nb, void **ptr);
+void			ft_error_free(int nb, void **ptr);
 
 /*
 ** ==================== FUNCTIONS IN RENDER.C ==================== **
@@ -76,9 +86,16 @@ void 			ft_error_free(int nb, void **ptr);
 void			render_m(t_mlx *m);
 void			draw(t_mlx *m);
 void			draw_lines(t_mlx *m, int x, int y);
+
+/*
+** ==================== FUNCTIONS IN DRAW.C ==================== **
+*/
+
 void			draw_line(t_mlx *m, t_dot tabxy, int x, int y);
 t_dot			rasterize_para(t_mlx *m, int x, int y, int z);
 t_dot			rasterize_iso(t_mlx *m, int x, int y, int z);
+void			draw_m_para(t_mlx *m, int x, int y);
+void			draw_m_iso(t_mlx *m, int x, int y);
 
 /*
 ** ==================== FUNCTIONS IN KEYMAP.C ==================== **
@@ -86,6 +103,6 @@ t_dot			rasterize_iso(t_mlx *m, int x, int y, int z);
 
 int				deal_key(int key, void *param);
 int				deal_mouse(int scroll, void *param);
-
+void			draw_string(t_mlx *m);
 char			*ft_strjoin_free(char *s1, char *s2, int d);
 #endif
