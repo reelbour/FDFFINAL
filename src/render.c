@@ -12,6 +12,10 @@
 
 #include "../inc/fdf.h"
 
+/*
+** Bresenham algorithm **
+*/
+
 void	draw_line(t_mlx *m, t_dot tabxy, int x, int y)
 {
 	t_dot	tabxy_s;
@@ -35,6 +39,10 @@ void	draw_line(t_mlx *m, t_dot tabxy, int x, int y)
 		e[1] < tabxy_s.y ? m->y0 += tabxy_e.y : 1 == 1;
 	}
 }
+
+/*
+** formula for parallel porjection **
+*/
 
 t_dot	rasterize_para(t_mlx *m, int x, int y, int z)
 {
@@ -65,6 +73,10 @@ void	draw_m_para(t_mlx *m, int x, int y)
 			m->dy + (y + m->sy) + m->coord[y / m->sy + 1][x / m->sx] * m->z);
 }
 
+/*
+** formula for isometric projection **
+*/
+
 t_dot	rasterize_iso(t_mlx *m, int x, int y, int z)
 {
 	t_dot		tabxy;
@@ -90,19 +102,28 @@ void	draw_m_iso(t_mlx *m, int x, int y)
 		m->coord[y / m->sy + 1][x / m->sx] * m->z + x + (y + m->sy));
 }
 
+/*
+** Initialize structure variables **
+*/
+
 void	init_draw(t_mlx *m)
 {
 	if (m->check == 0)
 	{
+		m->zoom = 0.8;
 		m->z = -3;
 		m->dx = W * 0.4;
 		m->dy = 50;
-		m->sx = (W * 0.3) / (m->nb_w / m->nb_l - 1);
-		m->sy = (H * 0.3) / (m->nb_l - 1);
+		m->sx = ((W * 0.3) / (m->nb_w / m->nb_l - 1)) * m->zoom;
+		m->sy = ((H * 0.3) / (m->nb_l - 1)) * m->zoom;
 		m->clr = 0x00FFFF;
 	}
 	m->check++;
 }
+
+/*
+** Draw projections **
+*/
 
 void	draw(t_mlx *m)
 {
@@ -119,16 +140,20 @@ void	draw(t_mlx *m)
 			x = 0;
 			y += m->sy;
 		}
-		draw_m_para(m, x, y);
+		draw_m_iso(m, x, y);
 		//mlx_pixel_put(m->mlx, m->win, x, y, 0xFFFFFF);
 		x += m->sx;
 		if (x / m->sx == (m->nb_w / m->nb_l))
 		{
-			draw_m_para(m, x, y);
+			draw_m_iso(m, x, y);
 			//mlx_pixel_put(m->mlx, m->win, x, y, 0xFFFFFF);
 		}
 	}
 }
+
+/*
+** Display projections **
+*/
 
 void	render_m(t_mlx *m)
 {
@@ -140,14 +165,7 @@ void	render_m(t_mlx *m)
 	m->win = mlx_new_window(m->mlx, W, H, "test");
 	draw(m);
 	mlx_key_hook(m->win, deal_key, (void*)m);
-	// printf("%s%d\n", "m->nb_w : ", m->nb_w);
-	// printf("%s%d\n", "m->nb_l : ", m->nb_l);
-	// printf("%s%d\n", "m->z : ", m->z);
-	// printf("%s%d\n", "m->dx : ", m->dx);
-	// printf("%s%d\n", "m->dy : ", m->dy);
-	// printf("%s%d\n", "m->sx : ", m->sx);
-	// printf("%s%d\n", "m->sy : ", m->sy);
-	// printf("%s%d\n", "m->x0 : ", m->x0);
-	// printf("%s%d\n", "m->y0 : ", m->y0);
 	mlx_loop(m->mlx);
+	mlx_destroy_window(m->mlx, m->win);
+	ft_free_tab((void**)m->coord);
 }

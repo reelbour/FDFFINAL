@@ -12,12 +12,19 @@
 
 #include "../inc/fdf.h"
 
+void 	ft_error_free(int nb, void **ptr)
+{
+	if (nb == 2)
+	{
+		ft_free_tab(ptr);
+		ft_putendl("malloc failure");
+	}
+}
+
 void	ft_error(int nb)
 {
 	if (nb == 1)
 		ft_putendl("can't open the file descriptor");
-	if (nb == 2)
-		ft_putendl("malloc failure");
 	if (nb == 3)
 		ft_putendl("error");
 	exit(0);

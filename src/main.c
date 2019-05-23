@@ -24,7 +24,7 @@ int		main(int ac, char **av)
 		if (!(fd = open(av[1], O_RDONLY)) && fd < 0)
 			ft_error(1);
 		if (!(m = ft_memalloc(sizeof(*m))))
-			ft_error(2);
+			ft_error_free(2, (void**)&m);
 		read_m(fd, m);
 		render_m(m);
 	}

@@ -15,9 +15,12 @@
 
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
+# include "keycode.h"
 # include <math.h>
 # define W 1560
 # define H 1300
+# define Z_MIN 0.1
+# define Z_MAX 6.9
 # include <stdio.h>
 
 typedef struct	s_dot
@@ -57,12 +60,14 @@ void			read_m(int fd, t_mlx *m);
 int				count_words(char *str);
 void			stock_int_tab(char *str, t_mlx *m);
 void			ft_secure_malloc(t_mlx *m, char **nb, char **split);
+void 			convert_int(t_mlx *m, char ***split, char ***nb);
 
 /*
 ** ==================== FUNCTIONS IN VALIDATION.C ==================== **
 */
 
-void			ft_error(int n);
+void			ft_error(int nb);
+void 			ft_error_free(int nb, void **ptr);
 
 /*
 ** ==================== FUNCTIONS IN RENDER.C ==================== **
@@ -81,4 +86,6 @@ t_dot			rasterize_iso(t_mlx *m, int x, int y, int z);
 
 int				deal_key(int key, void *param);
 int				deal_mouse(int scroll, void *param);
+
+char			*ft_strjoin_free(char *s1, char *s2, int d);
 #endif
