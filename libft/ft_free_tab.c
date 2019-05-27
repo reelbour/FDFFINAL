@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/27 17:30:09 by ahammou-         ###   ########.fr       */
+/*   Created: 2019/05/27 13:55:37 by ahammou-          #+#    #+#             */
+/*   Updated: 2019/05/27 13:55:44 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_free_tab(void **tab)
 {
-	int		fd;
-	t_mlx	*m;
+	int i;
 
-	if (ac != 2)
-		ft_putchar('\n');
-	else
+	if (!tab)
+		return ;
+	i = 0;
+	while (tab[i])
 	{
-		valid_extension(av[1]);
-		if (!(fd = open(av[1], O_RDONLY)) && fd < 0)
-			ft_error(1);
-		if (!(m = ft_memalloc(sizeof(*m))))
-			ft_error_free(2, (void**)&m);
-		read_m(fd, m);
-		close(fd);
-		render_m(m);
-		free(m);
+		if (tab[i] == NULL)
+		{
+			i++;
+			continue ;
+		}
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
 	}
-	return (0);
+	free(tab);
 }

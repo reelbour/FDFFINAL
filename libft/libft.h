@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:59:00 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/23 14:44:58 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/27 13:56:12 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ int					get_next_line(const int fd, char **line);
 int					ft_lstdestroy(t_list **lst);
 void				ft_lstrev(t_list **alst);
 void				ft_free_tab_void(void **tab);
+void				ft_free_tab(void **tab);
 #endif

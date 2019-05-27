@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 16:21:14 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/23 16:52:12 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/27 16:40:20 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ void	init_draw(t_mlx *m)
 {
 	if (m->check == 0)
 	{
+		m->p = 2;
 		m->zoom = 0.8;
-		m->z = -2;
+		m->z = -0.25;
 		m->dx = W * 0.4;
-		m->dy = 250;
-		m->sx = ((W * 0.3) / (m->nb_w / m->nb_l - 1)) * m->zoom;
-		m->sy = ((H * 0.3) / (m->nb_l - 1)) * m->zoom;
-		m->clr = 0x00FFFF;
+		m->dy = 50;
+		m->sx = ((W * 0.6) / (m->nb_w / m->nb_l)) * m->zoom;
+		m->sy = ((W * 0.6) / (m->nb_w / m->nb_l)) * m->zoom;
+		m->clr = 0xFF80ED;
 	}
 	m->check++;
 }
@@ -51,11 +52,11 @@ void	draw(t_mlx *m)
 			x = 0;
 			y += m->sy;
 		}
-		draw_m_para(m, x, y);
+		choose_projection(m, x, y);
 		x += m->sx;
 		if (x / m->sx == (m->nb_w / m->nb_l))
 		{
-			draw_m_para(m, x, y);
+			choose_projection(m, x, y);
 		}
 	}
 }
@@ -63,6 +64,14 @@ void	draw(t_mlx *m)
 /*
 ** Display projections **
 */
+
+void	choose_projection(t_mlx *m, int x, int y)
+{
+	if (m->p == 1)
+		draw_m_para(m, x, y);
+	if (m->p == 2)
+		draw_m_iso(m, x, y);
+}
 
 void	render_m(t_mlx *m)
 {

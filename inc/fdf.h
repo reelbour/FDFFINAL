@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:50:09 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/23 16:56:50 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/27 17:52:52 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # include <math.h>
 # define W 1560
 # define H 1300
-# define Z_MIN 0.2
+# define Z_MIN 0.40
 # define Z_MAX 3
-# define A_MIN -500
-# define A_MAX 500
+# define A_MIN -5
+# define A_MAX 5
 # define Q_KEY 12
 # define A_KEY 0
 # define LEFT_KEY 123
@@ -61,6 +61,7 @@ typedef struct	s_mlx
 	int		check;
 	float	zoom;
 	int		**coord;
+	int		p;
 }				t_mlx;
 
 /*
@@ -69,7 +70,7 @@ typedef struct	s_mlx
 
 void			read_m(int fd, t_mlx *m);
 int				count_words(char *str);
-void			stock_int_tab(char **str, t_mlx *m);
+void			stock_int_tab(char *str, t_mlx *m);
 void			convert_int(t_mlx *m, char **split);
 
 /*
@@ -78,7 +79,8 @@ void			convert_int(t_mlx *m, char **split);
 
 void			ft_error(int nb);
 void			ft_error_free(int nb, void **ptr);
-
+void			valid_extension(char *av);
+void			valid_format(char *str);
 /*
 ** ==================== FUNCTIONS IN RENDER.C ==================== **
 */
@@ -86,7 +88,7 @@ void			ft_error_free(int nb, void **ptr);
 void			render_m(t_mlx *m);
 void			draw(t_mlx *m);
 void			draw_lines(t_mlx *m, int x, int y);
-
+void			choose_projection(t_mlx *m, int x, int y);
 /*
 ** ==================== FUNCTIONS IN DRAW.C ==================== **
 */
