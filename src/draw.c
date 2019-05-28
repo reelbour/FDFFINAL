@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 16:50:46 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/23 16:56:55 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/28 17:49:25 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,39 @@ void	draw_line(t_mlx *m, t_dot tabxy, int x, int y)
 }
 
 /*
+** formula for isometric projection **
+*/
+
+t_dot	rasterize_iso(t_mlx *m, int x, int y, int z)
+{
+	t_dot		tabxy;
+
+	tabxy.x = m->dx + ((0.7 * (double)x) - (0.7 * (double)y));
+	tabxy.y = m->dy + z * m->z + ((0.7 / 2.0) * (double)x + (0.7 / 2.0)
+	* (double)y);
+	return (tabxy);
+}
+
+void	draw_m_iso(t_mlx *m, int x, int y)
+{
+	t_dot	tabxy;
+
+	tabxy = rasterize_iso(m, x, y, m->coord[y / m->sy][x / m->sx]);
+	if (x / m->sx < (m->nb_w / m->nb_l) && y / m->sy < m->nb_l)
+		draw_line(m, tabxy,
+			m->dx + 0.7 * (double)(x + m->sx) - 0.7 * (double)y,
+			m->dy + m->coord[y / m->sy][x / m->sx + 1] * m->z + (0.7 / 2.0) * (x + m->sx) + (0.7 / 2.0) * y);
+	if (x / m->sx == (m->nb_w / m->nb_l) && y / m->sy < m->nb_l - 1)
+		draw_line(m, tabxy,
+			m->dx + 0.7 * (double)x - 0.7 * (double)(y + m->sy),
+			m->dy + m->coord[y / m->sy + 1][x / m->sx] * m->z + (0.7 / 2.0) * x + (0.7 / 2.0) * (y + m->sy));
+	if (y / m->sy < m->nb_l - 1 && x / m->sx < m->nb_w / m->nb_l)
+		draw_line(m, tabxy,
+			m->dx + 0.7 * (double)x - 0.7 * (double)(y + m->sy),
+			m->dy + m->coord[y / m->sy + 1][x / m->sx] * m->z + (0.7 / 2.0) * x + (0.7 / 2.0) * (y + m->sy));
+}
+
+/*
 ** formula for parallel porjection **
 */
 
@@ -48,8 +81,8 @@ t_dot	rasterize_para(t_mlx *m, int x, int y, int z)
 {
 	t_dot		tabxy;
 
-	tabxy.x = m->dx + x + z * m->z;
-	tabxy.y = m->dy + y + z * m->z;
+	tabxy.x = m->dx + x + 0.7 * (z * m->z);
+	tabxy.y = m->dy + y + (0.7 / 2) * (z * m->z);
 	return (tabxy);
 }
 
@@ -60,43 +93,14 @@ void	draw_m_para(t_mlx *m, int x, int y)
 	tabxy = rasterize_para(m, x, y, m->coord[y / m->sy][x / m->sx]);
 	if (x / m->sx < (m->nb_w / m->nb_l) && y / m->sy < m->nb_l)
 		draw_line(m, tabxy,
-			m->dx + (x + m->sx) + m->coord[y / m->sy][x / m->sx + 1] * m->z,
-			m->dy + y + m->coord[y / m->sy][x / m->sx + 1] * m->z);
+			m->dx + (x + m->sx) + 0.7 * (m->coord[y / m->sy][x / m->sx + 1] * m->z),
+			m->dy + y + (0.7 / 2) * (m->coord[y / m->sy][x / m->sx + 1] * m->z));
 	if (y / m->sy < m->nb_l - 1 && x / m->sx < m->nb_w / m->nb_l)
 		draw_line(m, tabxy,
-			m->dx + x + m->coord[y / m->sy + 1][x / m->sx] * m->z,
-			m->dy + (y + m->sy) + m->coord[y / m->sy + 1][x / m->sx] * m->z);
+			m->dx + x + 0.7 * (m->coord[y / m->sy + 1][x / m->sx] * m->z),
+			m->dy + (y + m->sy) + (0.7 / 2) * (m->coord[y / m->sy + 1][x / m->sx] * m->z));
 	if (x / m->sx == (m->nb_w / m->nb_l) && y / m->sy < m->nb_l - 1)
 		draw_line(m, tabxy,
-			m->dx + x + m->coord[y / m->sy + 1][x / m->sx] * m->z,
-			m->dy + (y + m->sy) + m->coord[y / m->sy + 1][x / m->sx] * m->z);
-}
-
-/*
-** formula for isometric projection **
-*/
-
-t_dot	rasterize_iso(t_mlx *m, int x, int y, int z)
-{
-	t_dot		tabxy;
-
-	tabxy.x = m->dx + (x - y);
-	tabxy.y = m->dy + z * m->z + x + y;
-	return (tabxy);
-}
-
-void	draw_m_iso(t_mlx *m, int x, int y)
-{
-	t_dot	tabxy;
-
-	tabxy = rasterize_iso(m, x, y, m->coord[y / m->sy][x / m->sx]);
-	if (x / m->sx < (m->nb_w / m->nb_l) && y / m->sy < m->nb_l)
-		draw_line(m, tabxy, m->dx + ((x + m->sx) - y), m->dy +
-		m->coord[y / m->sy][x / m->sx + 1] * m->z + (x + m->sx) + y);
-	if (x / m->sx == (m->nb_w / m->nb_l) && y / m->sy < m->nb_l - 1)
-		draw_line(m, tabxy, m->dx + (x - (y + m->sy)), m->dy +
-		m->coord[y / m->sy + 1][x / m->sx] * m->z + x + (y + m->sy));
-	if (y / m->sy < m->nb_l - 1 && x / m->sx < m->nb_w / m->nb_l)
-		draw_line(m, tabxy, m->dx + (x - (y + m->sy)), m->dy +
-		m->coord[y / m->sy + 1][x / m->sx] * m->z + x + (y + m->sy));
+			m->dx + x + 0.7 * (m->coord[y / m->sy + 1][x / m->sx] * m->z),
+			m->dy + (y + m->sy) + (0.7 / 2) * (m->coord[y / m->sy + 1][x / m->sx] * m->z));
 }

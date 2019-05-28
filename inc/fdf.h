@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:50:09 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/27 17:52:52 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/28 17:53:52 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void			convert_int(t_mlx *m, char **split);
 void			ft_error(int nb);
 void			ft_error_free(int nb, void **ptr);
 void			valid_extension(char *av);
-void			valid_format(char *str);
+int				valid_format(char *str);
 /*
 ** ==================== FUNCTIONS IN RENDER.C ==================== **
 */
