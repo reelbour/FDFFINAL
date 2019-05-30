@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:50:09 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/28 17:53:52 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/30 11:13:17 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define H 1300
 # define Z_MIN 0.40
 # define Z_MAX 3
-# define A_MIN -5
-# define A_MAX 5
+# define A_MIN -15
+# define A_MAX 15
 # define Q_KEY 12
 # define A_KEY 0
 # define LEFT_KEY 123
@@ -50,6 +50,7 @@ typedef struct	s_mlx
 	void	*win;
 	int		nb_l;
 	int		nb_w;
+	int		nb_col;
 	float	z;
 	int		sx;
 	int		sy;

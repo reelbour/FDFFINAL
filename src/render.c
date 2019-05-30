@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 16:21:14 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/28 17:42:49 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/30 16:40:23 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	init_draw(t_mlx *m)
 		m->z = -0.95;
 		m->dx = W * 0.4;
 		m->dy = 50;
-		m->sx = ((W * 0.6) / (m->nb_w / m->nb_l)) * m->zoom;
-		m->sy = ((W * 0.6) / (m->nb_w / m->nb_l)) * m->zoom;
+		m->sx = ((W * 0.6) / m->nb_col) * m->zoom;
+		m->sy = ((W * 0.6) / m->nb_col) * m->zoom;
 		m->clr = 0xFF80ED;
 	}
 	m->check++;
@@ -45,19 +45,19 @@ void	draw(t_mlx *m)
 	y = 0;
 	draw_string(m);
 	init_draw(m);
-	while (x / m->sx < (m->nb_w / m->nb_l) || y / m->sy < m->nb_l - 1)
+	while (x / m->sx < m->nb_col - 1 || y / m->sy < m->nb_l - 1)
 	{
-		if (x / m->sx == (m->nb_w / m->nb_l))
+		printf("x: %d\n", x / m->sx);
+		printf("y: %d\n",  y / m->sy);
+		if (x / m->sx == m->nb_col - 1)
 		{
 			x = 0;
 			y += m->sy;
 		}
 		choose_projection(m, x, y);
 		x += m->sx;
-		if (x / m->sx == (m->nb_w / m->nb_l))
-		{
+		if (x / m->sx == m->nb_col - 1)
 			choose_projection(m, x, y);
-		}
 	}
 }
 

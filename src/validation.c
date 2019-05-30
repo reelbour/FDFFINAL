@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:57:55 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/28 17:52:31 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/30 17:02:12 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ int		valid_format(char *str)
 
 void	valid_extension(char *av)
 {
-	int	len;
-
-	len = ft_strlen(av);
 	if (!ft_strstr(av, ".fdf"))
 	{
 		ft_putendl("Error: not a valid file");
@@ -61,8 +58,12 @@ void	ft_error(int nb)
 	if (nb == 2)
 		ft_putendl("Error : can't read the file descriptor");
 	if (nb == 3)
-		ft_putendl("Error");
+		ft_putendl("Error: the file descriptor is empty");
 	if (nb == 4)
-		ft_putendl("Error: need at least 10 digits per line");
+		ft_putendl("Error: need at least 4 digits per line");
+	if (nb == 5)
+		ft_putendl("Error: map must be square or rectangle only");
+	if (nb == 6)
+		ft_putendl("Error: not a valid map");
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/27 17:30:09 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/30 15:47:50 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		main(int ac, char **av)
 	t_mlx	*m;
 
 	if (ac != 2)
-		ft_putchar('\n');
+		ft_putendl("Usage: ./fdf must be followed by a file.fdf");
 	else
 	{
 		valid_extension(av[1]);
@@ -27,7 +27,9 @@ int		main(int ac, char **av)
 		if (!(m = ft_memalloc(sizeof(*m))))
 			ft_error_free(2, (void**)&m);
 		read_m(fd, m);
+		m->nb_col = (int)ceil(m->nb_w / m->nb_l);
 		close(fd);
+		
 		render_m(m);
 		free(m);
 	}
