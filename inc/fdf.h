@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:50:09 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/30 11:13:17 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/30 17:42:54 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include <math.h>
-# define W 1560
+# define W 2140
 # define H 1300
 # define Z_MIN 0.40
 # define Z_MAX 3

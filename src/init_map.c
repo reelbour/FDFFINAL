@@ -6,7 +6,7 @@
 /*   By: reelbour <reelbour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 15:32:23 by reelbour          #+#    #+#             */
-/*   Updated: 2019/05/30 16:57:54 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/30 17:37:09 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	stock_int_tab(char *str, t_mlx *m)
 	i = 0;
 	ft_secure_malloc(m, nb, split);
 	split = ft_strsplit(str, '\n');
-	printf("m->nb_w %d\n", m->nb_w);
 	while (split[i])
 	{
 		nb = ft_strsplit(split[i], ' ');
@@ -54,10 +53,8 @@ void	stock_int_tab(char *str, t_mlx *m)
 		while (j < m->nb_col && nb[j])
 		{
 			m->coord[i][j] = ft_atoi(nb[j]);
-			printf("%d ", m->coord[i][j]);
 			j++;
 		}
-		printf("\n");
 		ft_strdel(&nb[j]);
 		i++;
 	}
@@ -84,28 +81,16 @@ void	read_m(int fd, t_mlx *m)
 	while ((ret = get_next_line(fd, &line) > 0))
 	{
 		m->nb_l++;
-		// if (start == 1 && (check_w != (ft_countwords(line, ' ') - 1)))
-		// 	ft_error(5);
 		check_w = ft_countwords(line, ' ') - 1;
 		if (start == 0)
 		{
-			if (valid_format(line) == 1)
-			{
-				if (!(str = ft_strdup(line)))
-					ft_error(2);
-				start = 1;
-				free(line);
-			}
-			else
-				ft_error(6);
-		}
-		else if (valid_format(line) == 1)
-		{
-			if (!(str = ft_strjoin_free(str, line, 3)))
+			if (!(str = ft_strdup(line)))
 				ft_error(2);
+			start = 1;
+			free(line);
 		}
-		else
-			ft_error(6);
+		else if (!(str = ft_strjoin_free(str, line, 3)))
+			ft_error(2);
 		if (!(str = ft_strjoin_free(str, "\n", 1)))
 			ft_error(2);
 	}

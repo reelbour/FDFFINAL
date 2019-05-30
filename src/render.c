@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 16:21:14 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/30 16:40:23 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/30 17:34:33 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	draw(t_mlx *m)
 	init_draw(m);
 	while (x / m->sx < m->nb_col - 1 || y / m->sy < m->nb_l - 1)
 	{
-		printf("x: %d\n", x / m->sx);
-		printf("y: %d\n",  y / m->sy);
 		if (x / m->sx == m->nb_col - 1)
 		{
 			x = 0;

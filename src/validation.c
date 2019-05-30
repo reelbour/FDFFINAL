@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:57:55 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/30 17:02:12 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/05/30 17:36:11 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,8 @@
 
 int		valid_format(char *str)
 {
-	int	i;
-	int res;
-
-	i = 0;
-	res = 1;
-	while (str[i])
-	{
-		if (str[i] == ' ' || str[i] == '-' || (str[i] > 47 && str[i] < 58))
-			i++;
-		else
-		{
-			res = 0;
-			break ;
-		}
-	}
-	return (res);
+	ft_atoi(str);
+	return (1);
 }
 
 void	valid_extension(char *av)
