@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:57:55 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/30 17:36:11 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/02 14:13:06 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ void	ft_error(int nb)
 	if (nb == 2)
 		ft_putendl("Error : can't read the file descriptor");
 	if (nb == 3)
-		ft_putendl("Error: the file descriptor is empty");
+		ft_putendl("Error: the file is empty");
 	if (nb == 4)
-		ft_putendl("Error: need at least 4 digits per line");
+		ft_putendl("Error: need at least 2 digits(spaced) per line to draw a\
+			segment with less than 502 lines");
 	if (nb == 5)
 		ft_putendl("Error: map must be square or rectangle only");
 	if (nb == 6)

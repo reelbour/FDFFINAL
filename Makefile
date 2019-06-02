@@ -6,7 +6,7 @@
 #    By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/19 08:31:57 by ahammou-          #+#    #+#              #
-#    Updated: 2019/05/30 16:20:27 by ahammou-         ###   ########.fr        #
+#    Updated: 2019/06/02 13:51:19 by ahammou-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fdf
 OBJ = src/init_map.o src/main.o src/render.o src/validation.o src/keymap.o
 SRC = src/init_map.c src/main.c src/render.c src/validation.c src/keymap.c\
 	  src/draw.c src/menu.c libft/libft.a
-FLAGS =  -Wall -Wextra -Werror #-fsanitize=address
+FLAGS =  -Wall -Wextra -Werror -fsanitize=address
 all: $(NAME)
 
 $(NAME):

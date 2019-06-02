@@ -6,7 +6,7 @@
 /*   By: reelbour <reelbour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 15:32:23 by reelbour          #+#    #+#             */
-/*   Updated: 2019/05/30 17:37:09 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/02 14:09:52 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ void	stock_int_tab(char *str, t_mlx *m)
 		while (j < m->nb_col && nb[j])
 		{
 			m->coord[i][j] = ft_atoi(nb[j]);
+			// printf("%d ", m->coord[i][j]);
 			j++;
 		}
+		// printf("\n");
 		ft_strdel(&nb[j]);
 		i++;
 	}
@@ -93,6 +95,8 @@ void	read_m(int fd, t_mlx *m)
 			ft_error(2);
 		if (!(str = ft_strjoin_free(str, "\n", 1)))
 			ft_error(2);
+		if (m->nb_l > 502)
+			ft_error(4);
 	}
 	m->nb_w = ft_countwords(str, ' ') - 1;
 	if (ret < 0)
@@ -100,6 +104,6 @@ void	read_m(int fd, t_mlx *m)
 	if (m->nb_l == 0)
 		ft_error(3);
 	stock_int_tab(str, m);
-	// if (m->nb_col < 4)
-	// 	ft_error(4);
+	if (m->nb_col < 2)
+		ft_error(4);
 }

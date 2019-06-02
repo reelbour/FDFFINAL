@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 07:46:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/27 17:14:35 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/02 13:49:19 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ void	move_arrow(t_mlx *m, int key)
 		m->dx += 75;
 	if (key == PLUS_KEY || key == MINUS_KEY)
 		zoom(m, key);
+	if (key == R_KEY)
+	{
+		m->check = 0;
+		init_draw(m);
+	}
 	draw(m);
 }
 
@@ -64,6 +69,8 @@ int		deal_key(int key, void *param)
 {
 	if (key == ESC_KEY)
 		exit(1);
+	if (key == R_KEY)
+		move_arrow(param, key);
 	if ((key >= LEFT_KEY && key <= UP_KEY) || key == PLUS_KEY
 		|| key == MINUS_KEY)
 		move_arrow(param, key);

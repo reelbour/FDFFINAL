@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:50:09 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/30 17:42:54 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/02 13:42:27 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define A_MAX 15
 # define Q_KEY 12
 # define A_KEY 0
+# define R_KEY 15
 # define LEFT_KEY 123
 # define RIGHT_KEY 124
 # define DOWN_KEY 125
@@ -90,6 +91,7 @@ void			render_m(t_mlx *m);
 void			draw(t_mlx *m);
 void			draw_lines(t_mlx *m, int x, int y);
 void			choose_projection(t_mlx *m, int x, int y);
+void			init_draw(t_mlx *m);
 /*
 ** ==================== FUNCTIONS IN DRAW.C ==================== **
 */

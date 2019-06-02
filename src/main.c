@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/05/30 15:47:50 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/02 13:03:29 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int		main(int ac, char **av)
 		if (!(m = ft_memalloc(sizeof(*m))))
 			ft_error_free(2, (void**)&m);
 		read_m(fd, m);
-		m->nb_col = (int)ceil(m->nb_w / m->nb_l);
 		close(fd);
-		
 		render_m(m);
 		free(m);
 	}
