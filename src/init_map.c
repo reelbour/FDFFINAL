@@ -6,23 +6,24 @@
 /*   By: reelbour <reelbour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 15:32:23 by reelbour          #+#    #+#             */
-/*   Updated: 2019/06/02 14:09:52 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/02 17:05:07 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
 /*
 ** Initializes parameters in map struct
 */
 
-void	ft_secure_malloc(t_mlx *m, char **nb, char **split)
+void	ft_secure_malloc(t_mlx *m)
 {
-	if (!(split = (char**)malloc((sizeof(char*) * (m->nb_l + 1)))))
-		ft_error(2);
+	//if (!(split = (char**)malloc((sizeof(char*) * (m->nb_l + 1)))))
+	//	ft_error(2);
 	if (!(m->coord = (int**)ft_memalloc((sizeof(int*) * (m->nb_l + 1)))))
-		ft_error(2);
-	if (!(nb = (char**)malloc((sizeof(char*) * (m->nb_l + 1)))))
-		ft_error(2);
+		ft_error_free(2, (void**)m->coord);
+//	if (!(nb = (char**)malloc((sizeof(char*) * (m->nb_l + 1)))))
+//		ft_error_free(2, (void**)nb);
 }
 
 void	stock_int_tab(char *str, t_mlx *m)
@@ -35,11 +36,14 @@ void	stock_int_tab(char *str, t_mlx *m)
 	nb = NULL;
 	split = NULL;
 	i = 0;
-	ft_secure_malloc(m, nb, split);
-	split = ft_strsplit(str, '\n');
+	ft_secure_malloc(m);
+	if (!(split = ft_strsplit(str, '\n')))
+		ft_error_free(2, (void**)split);
+	free(str);
 	while (split[i])
 	{
-		nb = ft_strsplit(split[i], ' ');
+		if (!(nb = ft_strsplit(split[i], ' ')))
+			ft_error_free(2, (void**)nb);
 		if (i == 0)
 		{
 			m->nb_col = 0;
@@ -53,15 +57,12 @@ void	stock_int_tab(char *str, t_mlx *m)
 		while (j < m->nb_col && nb[j])
 		{
 			m->coord[i][j] = ft_atoi(nb[j]);
-			// printf("%d ", m->coord[i][j]);
+			free(nb[j]);
 			j++;
 		}
-		// printf("\n");
-		ft_strdel(&nb[j]);
+		free(split[i]);
 		i++;
 	}
-	ft_free_tab((void**)split);
-	ft_memdel((void**)&str);
 }
 
 /*

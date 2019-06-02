@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:57:55 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/06/02 14:13:06 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/02 14:30:17 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 int		valid_format(char *str)
 {
 	ft_atoi(str);
+	// int res;
+	// int i;
+	//
+	// res = 0;
+	// i = 0;
+	// while (str[i])
+	// {
+	// 	if (str[i] < 48 && str[i] > 57)
+	// 		ft_error
+	// }
+	// return (res);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 16:21:14 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/06/02 13:09:37 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/02 17:07:31 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_draw(t_mlx *m)
 		m->sy = ((W * 0.6) / m->nb_col) * m->zoom;
 		m->clr = 0xFF80ED;
 	}
-	m->check++;
+	m->check = 1;
 }
 
 /*
@@ -78,6 +78,7 @@ void	render_m(t_mlx *m)
 	draw(m);
 	mlx_key_hook(m->win, deal_key, (void*)m);
 	mlx_loop(m->mlx);
-	ft_free_tab_void(&m->mlx);
-	ft_free_tab_void(&m->win);
+	ft_free_tab((void**)m->coord);
+	free(&m->mlx);
+	free(&m->win);
 }

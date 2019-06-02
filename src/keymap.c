@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 07:46:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/06/02 13:49:19 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/02 17:10:30 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,5 @@ int		deal_key(int key, void *param)
 		altitude(param, key);
 	if (key == 18 || key == 19)
 		switch_projection(param, key);
-	ft_putnbr(key);
 	return (0);
 }
