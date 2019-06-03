@@ -6,14 +6,14 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 16:21:14 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/06/02 17:07:31 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/03 10:55:28 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
 /*
-** Initialize structure variables **
+** Initialize structure variables
 */
 
 void	init_draw(t_mlx *m)
@@ -33,7 +33,7 @@ void	init_draw(t_mlx *m)
 }
 
 /*
-** Draw projections **
+** Draw projections
 */
 
 void	draw(t_mlx *m)
@@ -60,7 +60,7 @@ void	draw(t_mlx *m)
 }
 
 /*
-** Display projections **
+** Display projections
 */
 
 void	choose_projection(t_mlx *m, int x, int y)

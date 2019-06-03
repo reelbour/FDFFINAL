@@ -6,11 +6,15 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 17:08:41 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/06/02 16:24:29 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/03 10:55:01 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+/*
+** Top left corner menu
+*/
 
 void	draw_string(t_mlx *m)
 {

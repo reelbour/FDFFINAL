@@ -6,11 +6,15 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 07:46:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/06/02 17:10:30 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/03 10:54:29 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+/*
+** Switch map projections
+*/
 
 void	switch_projection(t_mlx *m, int key)
 {
@@ -21,6 +25,10 @@ void	switch_projection(t_mlx *m, int key)
 		m->p = 2;
 	draw(m);
 }
+
+/*
+** Zoom maps
+*/
 
 void	zoom(t_mlx *m, int key)
 {
@@ -34,6 +42,10 @@ void	zoom(t_mlx *m, int key)
 	m->sy = round(((W * 0.6) / (m->nb_w / m->nb_l)) * m->zoom);
 }
 
+/*
+** Increment or decrement altitude value in m->coord[i][j]
+*/
+
 void	altitude(t_mlx *m, int key)
 {
 	mlx_clear_window(m->mlx, m->win);
@@ -43,6 +55,10 @@ void	altitude(t_mlx *m, int key)
 		m->z += 0.12;
 	draw(m);
 }
+
+/*
+** Moves the map
+*/
 
 void	move_arrow(t_mlx *m, int key)
 {
@@ -64,6 +80,11 @@ void	move_arrow(t_mlx *m, int key)
 	}
 	draw(m);
 }
+
+/*
+** Key dealing with : exit, moving map, zooming, changing altitude, reset map
+** and switching projections
+*/
 
 int		deal_key(int key, void *param)
 {

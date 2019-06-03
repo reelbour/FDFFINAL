@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:50:09 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/06/02 15:16:28 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/03 10:49:25 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@
 # define MINUS_KEY 78
 
 # include <stdio.h>
+
+/*
+** STRUCTURE USED TO DRAW SEGMENT **
+*/
 
 typedef struct	s_dot
 {

@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 16:50:46 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/06/02 16:24:21 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/03 10:50:40 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	draw_m_iso(t_mlx *m, int x, int y)
 }
 
 /*
-** formula for parallel porjection **
+** formula for parallele porjection **
 */
 
 t_dot	rasterize_para(t_mlx *m, int x, int y, int z)
