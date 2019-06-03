@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:57:55 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/06/03 11:03:36 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/03 13:50:04 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_error_free(int nb, void **ptr)
 }
 
 /*
-** Switch map projections
+**
 */
 
 void	ft_error(int nb)
@@ -52,8 +52,7 @@ void	ft_error(int nb)
 	if (nb == 3)
 		ft_putendl("Error: the file is empty");
 	if (nb == 4)
-		ft_putendl("Error: need at least 2 digits(spaced) per line to draw a\
-			segment with less than 502 lines");
+		ft_putendl("Error: need at least 2 digits(spaced) to draw a segment");
 	if (nb == 5)
 		ft_putendl("Error: map must be square or rectangle only");
 	if (nb == 6)

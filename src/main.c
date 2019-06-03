@@ -6,7 +6,7 @@
 /*   By: ahammou- <ahammou-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:25 by ahammou-          #+#    #+#             */
-/*   Updated: 2019/06/03 11:19:10 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/03 13:26:04 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		main(int ac, char **av)
 	int		fd;
 	t_mlx	*m;
 
-	if (ac == 2)
+	if (ac != 2)
 		ft_putendl("Usage: ./fdf must be followed by a file.fdf");
 	else
 	{

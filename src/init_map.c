@@ -6,7 +6,7 @@
 /*   By: reelbour <reelbour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 15:32:23 by reelbour          #+#    #+#             */
-/*   Updated: 2019/06/03 10:44:41 by ahammou-         ###   ########.fr       */
+/*   Updated: 2019/06/03 13:50:02 by ahammou-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,6 @@ void	read_m(int fd, t_mlx *m)
 	{
 		m->nb_l++;
 		stock_char_str(&start, &str, &line);
-		if (m->nb_l > 502)
-			ft_error(4);
 	}
 	m->nb_w = ft_countwords(str, ' ') - 1;
 	if (ret < 0)
